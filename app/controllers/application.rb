@@ -2,14 +2,21 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  helper :all # include all helpers, all the time
+  protect_from_forgery
 
-  # See ActionController::RequestForgeryProtection for details
-  # Uncomment the :secret if you're not using the cookie session store
-  protect_from_forgery # :secret => 'ad62fabcefeadf27bc2c6da02ff92cab'
-  
-  # See ActionController::Base for details 
-  # Uncomment this to filter the contents of submitted sensitive data parameters
-  # from your application log (in this case, all fields with names like "password"). 
-  # filter_parameter_logging :password
+  helper_method :logged_in?, :current_user
+
+  def logged_in?
+    !!current_user # tisk, tisk
+  end
+
+  def current_user
+    @current_user ||= self.current_user = User.find_by_id(session[:user_id])
+  end
+
+  def current_user=(user)
+    session[:user_id] = user ? user.id : nil
+    @current_user = user || false
+  end
+
 end

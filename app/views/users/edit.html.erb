@@ -1,10 +1,10 @@
-<h1>Editing user</h1>
+<h1>User Details</h1>
 
 <% form_for(@user) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :fullname %><br />
+    <%= f.label :fullname, "Full Name" %><br />
     <%= f.text_field :fullname %>
   </p>
   <p>
@@ -16,22 +16,23 @@
     <%= f.text_field :email %>
   </p>
   <p>
-    <%= f.label :url %><br />
+    <%= f.label :url, "Website" %><br />
     <%= f.text_field :url %>
   </p>
   <p>
-    <%= f.label :identity_url %><br />
-    <%= f.text_field :identity_url %>
+    <%= f.label :identity_url, "Open ID" %><br />
+    <%= f.text_field :identity_url, :disabled => true %>
   </p>
   <p>
-    <%= f.label :github_user %><br />
+    <%= f.label :github_user, "Github Username" %><br />
     <%= f.text_field :github_user %>
   </p>
   <p>
     <%= f.label :time_zone %><br />
-    <%= f.text_field :time_zone %>
+    <%= f.time_zone_select :time_zone, TimeZone.all %>
   </p>
   <p>
+
     <%= f.submit "Update" %>
   </p>
 <% end %>

@@ -1,19 +1,26 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+ambethia:
+  fullname: Jason L Perry
+  nickname: ambethia
+  email: ambethia@example.com
+  url: http://ambethia.com
+  identity_url: http://ambethia.com
+  github_user: ambethia
+  time_zone: 
 
-one:
-  fullname: MyString
-  nickname: MyString
-  email: MyString
-  url: MyString
-  identity_url: MyString
-  github_user: MyString
-  time_zone: MyString
-
-two:
-  fullname: MyString
-  nickname: MyString
-  email: MyString
-  url: MyString
-  identity_url: MyString
-  github_user: MyString
+dedguy:
+  fullname: James B Seaman
+  nickname: dedguy
+  email: dedguy@example.com
+  url: http://dedguy.net
+  identity_url: http://dedguy.myopenid.com/
+  github_user: dedguy
+  time_zone: 
+  
+madcowley:
+  fullname: Matthew Cowley
+  nickname: madcowley
+  email: madcowley@example.com
+  url: http://madcowley.com
+  identity_url: http://madcowley.pip.verisignlabs.com
+  github_user: madcowley
   time_zone: MyString
