@@ -1,0 +1,24 @@
+<h1>Editing volley</h1>
+
+<% form_for(@volley) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :player_id %><br />
+    <%= f.text_field :player_id %>
+  </p>
+  <p>
+    <%= f.label :match_id %><br />
+    <%= f.text_field :match_id %>
+  </p>
+  <p>
+    <%= f.label :completed_at %><br />
+    <%= f.datetime_select :completed_at %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @volley %> |
+<%= link_to 'Back', volleys_path %>

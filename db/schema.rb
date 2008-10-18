@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081018031821) do
+ActiveRecord::Schema.define(:version => 20081018084533) do
 
   create_table "matches", :force => true do |t|
     t.integer  "admin_id"
@@ -44,6 +44,14 @@ ActiveRecord::Schema.define(:version => 20081018031821) do
     t.string   "identity_url"
     t.string   "github_user"
     t.string   "time_zone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "volleys", :force => true do |t|
+    t.integer  "player_id"
+    t.integer  "match_id"
+    t.datetime "completed_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

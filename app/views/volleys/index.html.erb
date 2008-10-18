@@ -1,0 +1,24 @@
+<h1>Listing volleys</h1>
+
+<table>
+  <tr>
+    <th>Player</th>
+    <th>Match</th>
+    <th>Completed at</th>
+  </tr>
+
+<% for volley in @volleys %>
+  <tr>
+    <td><%=h volley.player_id %></td>
+    <td><%=h volley.match_id %></td>
+    <td><%=h volley.completed_at %></td>
+    <td><%= link_to 'Show', volley %></td>
+    <td><%= link_to 'Edit', edit_volley_path(volley) %></td>
+    <td><%= link_to 'Destroy', volley, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New volley', new_volley_path %>
