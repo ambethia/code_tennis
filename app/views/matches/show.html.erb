@@ -1,6 +1,8 @@
 <h2><%=h @match.name %></h2>
 <% if !@match.active %>
 	<h3>This match is over.</h3>
+<% elsif current_user == @match.admin %>
+	<%= link_to 'Close this match', complete_match_match_path(@match) %>
 <% end %>
 <p>
   <b>Admin:</b> <%= link_to h(@match.admin.fullname), @match.admin %>
