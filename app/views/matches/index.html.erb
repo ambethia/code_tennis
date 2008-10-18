@@ -1,0 +1,28 @@
+<h1>Listing matches</h1>
+
+<table>
+  <tr>
+    <th>Admin</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Github user</th>
+    <th>Github project</th>
+  </tr>
+
+<% for match in @matches %>
+  <tr>
+    <td><%=h match.admin_id %></td>
+    <td><%=h match.name %></td>
+    <td><%=h match.description %></td>
+    <td><%=h match.github_user %></td>
+    <td><%=h match.github_project %></td>
+    <td><%= link_to 'Show', match %></td>
+    <td><%= link_to 'Edit', edit_match_path(match) %></td>
+    <td><%= link_to 'Destroy', match, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New match', new_match_path %>
