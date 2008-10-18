@@ -1,6 +1,7 @@
 class MatchesController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :push
 
+  
   # GET /matches
   # GET /matches.xml
   def index
@@ -89,19 +90,41 @@ class MatchesController < ApplicationController
   # POST /matches/1
   def push
     @match = Match.find(params[:id])
-    @match.push(params[:payload])
+    if @match.active?
+      @match.push(params[:payload])
 
-    head :ok
+      head :ok
+    else
+      head :ok
+    end
   end
   
-  def complete
+  def complete_volley
     @match = Match.find(params[:id])
-    if current_user == @match.admin
-      @match.new_volley
-      flash[:notice] = 'Volley completed.'
+    if @match.active?
+      if current_user == @match.admin
+        @match.new_volley
+        flash[:notice] = 'Volley completed.'
+      else
+        flash[:error] = "Please ask the admin to do this for you."
+      end
     else
-      flash[:error] = "Please ask the admin to do this for you."
+      flash[:error]  = 'This match is closed.'
     end
     redirect_to match_path(@match)
   end
+  
+  def complete_match
+    @match = Match.find(params[:id])
+    if current_user == @match.admin
+      if @match.active? && 
+        @match.update_attributes(:active => false)
+        flash[:notice] = 'Match closed.'
+      end
+    else
+      flash[:error] = 'Please ask the admin to do this for you.'
+    end
+    redirect_to match_path(@match)
+  end
+  
 end

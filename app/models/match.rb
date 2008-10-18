@@ -53,4 +53,8 @@ class Match < ActiveRecord::Base
     (users << admin).uniq
   end
   
+  def active?
+    self.active
+  end
+  
 end
