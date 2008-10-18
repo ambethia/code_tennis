@@ -1,0 +1,24 @@
+<h1>Editing commit</h1>
+
+<% form_for(@commit) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :volley_id %><br />
+    <%= f.text_field :volley_id %>
+  </p>
+  <p>
+    <%= f.label :player_id %><br />
+    <%= f.text_field :player_id %>
+  </p>
+  <p>
+    <%= f.label :message %><br />
+    <%= f.text_area :message %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @commit %> |
+<%= link_to 'Back', commits_path %>

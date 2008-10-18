@@ -3,8 +3,8 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe Volley do
   before(:each) do
     @valid_attributes = {
-      :player_id => "1",
-      :match_id => "1",
+      :player_id => 1,
+      :match_id  => 1,
       :completed_at => Time.now
     }
   end

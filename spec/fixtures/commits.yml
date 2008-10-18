@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  volley_id: 1
+  player_id: 1
+  message: MyText
+
+two:
+  volley_id: 1
+  player_id: 1
+  message: MyText
