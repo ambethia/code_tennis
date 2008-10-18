@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081018093021) do
+ActiveRecord::Schema.define(:version => 20081018122637) do
 
   create_table "commits", :force => true do |t|
     t.integer  "volley_id"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20081018093021) do
     t.string   "time_zone"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "twitter_name"
   end
 
   create_table "volleys", :force => true do |t|
