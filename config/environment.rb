@@ -66,5 +66,6 @@ Rails::Initializer.run do |config|
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector
 end
+require 'will_paginate'
 ENV['TWITTER_USER'] = 'code_tennis'
 ENV['TWITTER_PWD'] = 'Quinta13?La'
