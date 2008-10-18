@@ -169,5 +169,15 @@ describe MatchesController do
     end
 
   end
+  
+  describe "responding to POST push" do
+
+    it "should push the requested match" do
+      Match.should_receive(:find).with("37").and_return(mock_match)
+      mock_match.should_receive(:push).with("JSON")
+      post :push, :id => "37", :payload => "JSON"
+    end
+  end
+  
 
 end

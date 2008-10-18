@@ -1,11 +1,12 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+ambethia_frisbee:
+  player: ambethia_frisbee
+  match: binary_frisbee
+  completed_at: <%= 1.day.ago %>
 
-one:
-  player_id: 1
-  match_id: 1
-  completed_at: 2008-10-18 04:45:33
+dedguy_frisbee:
+  player: dedguy_frisbee
+  match: binary_frisbee
 
-two:
-  player_id: 1
-  match_id: 1
-  completed_at: 2008-10-18 04:45:33
+dedguy_hospital:
+  player: dedguy_hospital
+  match: puppy_hospital

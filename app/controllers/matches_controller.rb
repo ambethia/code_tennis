@@ -1,4 +1,6 @@
 class MatchesController < ApplicationController
+  skip_before_filter :verify_authenticity_token, :only => :push
+
   # GET /matches
   # GET /matches.xml
   def index
@@ -82,5 +84,13 @@ class MatchesController < ApplicationController
       format.html { redirect_to(matches_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  # POST /matches/1
+  def push
+    @match = Match.find(params[:id])
+    @match.push(params[:payload])
+
+    head :ok
   end
 end

@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :commits
-  map.resources :matches
+  map.resources :matches, :member => { "push" => :post }
   map.resources :players
   map.resources :users
   map.resources :volleys

@@ -13,5 +13,18 @@
   <%=h @match.description %>
 </p>
 
+<% if !@match.volleys.blank? %>
+  <ul>
+  <% for volley in @match.volleys %>
+    <li>
+      <%=h volley.player.name %>
+    </li>
+  <% end %>
+  </ul>
+<% else %>
+  
+<% end %>
+
+
 <%= link_to 'Edit', edit_match_path(@match) %> |
 <%= link_to 'Back', matches_path %>

@@ -1,9 +1,11 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+dedguy_frisbee:
+  match: binary_frisbee
+  user: dedguy
 
-one:
-  match_id: 1
-  user_id: 1
+ambethia_frisbee:
+  match: binary_frisbee
+  user: ambethia
 
-two:
-  match_id: 1
-  user_id: 1
+dedguy_hospital:
+  match: puppy_hospital
+  user: dedguy
