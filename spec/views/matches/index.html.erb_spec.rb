@@ -6,16 +6,12 @@ describe "/matches/index.html.erb" do
   before(:each) do
     assigns[:matches] = [
       stub_model(Match,
-        :name => "value for name",
-        :description => "value for description",
-        :github_user => "value for github_user",
-        :github_project => "value for github_project"
+        :name        => "value for name",
+        :description => "value for description"
       ),
       stub_model(Match,
-        :name => "value for name",
-        :description => "value for description",
-        :github_user => "value for github_user",
-        :github_project => "value for github_project"
+        :name        => "value for name",
+        :description => "value for description"
       )
     ]
   end
@@ -24,8 +20,6 @@ describe "/matches/index.html.erb" do
     render "/matches/index.html.erb"
     response.should have_tag("tr>td", "value for name", 2)
     response.should have_tag("tr>td", "value for description", 2)
-    response.should have_tag("tr>td", "value for github_user", 2)
-    response.should have_tag("tr>td", "value for github_project", 2)
   end
 end
 

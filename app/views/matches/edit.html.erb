@@ -2,11 +2,6 @@
 
 <% form_for(@match) do |f| %>
   <%= f.error_messages %>
-
-  <p>
-    <%= f.label :admin_id %><br />
-    <%= f.text_field :admin_id %>
-  </p>
   <p>
     <%= f.label :name %><br />
     <%= f.text_field :name %>
@@ -24,9 +19,11 @@
     <%= f.text_field :github_project %>
   </p>
   <p>
-    <%= f.submit "Update" %>
+    <%= f.label :admin_id %><br />
+    <%= f.select :admin_id, @match.possible_admins.collect {|u| [ u.fullname, u.id ] } %>
+    <span class="note">Note: You will no longer be able to administer this match if you make someone else the admin.</span>
+  </p>
+  <p>
+    <%= f.submit "Update" %> <%= link_to "Cancel", @match %>
   </p>
 <% end %>
-
-<%= link_to 'Show', @match %> |
-<%= link_to 'Back', matches_path %>

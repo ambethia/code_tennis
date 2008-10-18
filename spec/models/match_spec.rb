@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Match do
-  fixtures :matches, :volleys, :players
+  fixtures :matches, :volleys, :players, :users
 
   before do
     @match  = matches(:binary_frisbee)
@@ -22,7 +22,7 @@ describe Match do
     before(:each) do
       @payload = File.open(fixture_path + "/github/payload.js").read
       @match.stub!(:active_volley).and_return(@volley)
-      @match.stub!(:players).and_return(stub("ARProxy", :[] => [], :find_by_email => @player))
+      @match.stub!(:users).and_return(stub("ARProxy", :[] => [], :find_by_email => @player))
     end
 
     it "should create many commits" do
@@ -30,11 +30,23 @@ describe Match do
     end
     
     it "should find the player" do
-      @match.players.should_receive(:find_by_email).with("jasper@ambethia.com").twice
+      @match.users.should_receive(:find_by_email).with("ambethia@example.com").twice
     end
 
     after(:each) do
       @match.push(@payload)
+    end
+
+  end
+
+  describe "possible admins" do
+
+    it "should not include users that aren't playing" do
+      matches(:binary_frisbee).possible_admins.should_not include(users(:madcowley))
+    end
+    
+    it "should not include admin twice if they're playing" do
+      matches(:binary_frisbee).possible_admins.size.should == 2
     end
 
   end

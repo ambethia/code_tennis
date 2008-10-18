@@ -29,7 +29,7 @@
   </p>
   <p>
     <%= f.label :time_zone %><br />
-    <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.all %>
+    <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones %>
   </p>
   <p>
 

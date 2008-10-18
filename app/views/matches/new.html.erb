@@ -2,11 +2,6 @@
 
 <% form_for(@match) do |f| %>
   <%= f.error_messages %>
-
-  <p>
-    <%= f.label :admin_id %><br />
-    <%= f.text_field :admin_id %>
-  </p>
   <p>
     <%= f.label :name %><br />
     <%= f.text_field :name %>
@@ -16,11 +11,11 @@
     <%= f.text_area :description %>
   </p>
   <p>
-    <%= f.label :github_user %><br />
+    <%= f.label :github_user, "Github Username" %><br />
     <%= f.text_field :github_user %>
   </p>
   <p>
-    <%= f.label :github_project %><br />
+    <%= f.label :github_project, "Github Project" %><br />
     <%= f.text_field :github_project %>
   </p>
   <p>

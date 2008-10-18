@@ -9,7 +9,8 @@ describe "/matches/edit.html.erb" do
       :name           => "Puppy Hospital",
       :description    => "The average salary for puppy hospital jobs is $43,000.",
       :github_user    => "ambethia",
-      :github_project => "puppy-hospital"
+      :github_project => "puppy-hospital",
+      :possible_admins => [mock_model(User, :fullname => "Jason L Perry")]
     )
   end
 

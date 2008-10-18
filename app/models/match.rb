@@ -12,11 +12,11 @@ class Match < ActiveRecord::Base
   def github_url
     "http://github.com/#{github_user}/#{github_project}"
   end
-  
+
   def active_volley
     volleys.find(:first, :conditions => {"completed_at" => nil})
   end
-  
+
   def push(payload)
     commits = ActiveSupport::JSON.decode(payload)["commits"]
     commits.each do |commit|
@@ -28,7 +28,7 @@ class Match < ActiveRecord::Base
       new_volley if commit["message"] =~ /volley/
     end
   end
-  
+
   def new_volley
     current_player = self.active_volley.player
     if current_player.nil?
@@ -39,10 +39,16 @@ class Match < ActiveRecord::Base
     self.active_volley.update_attributes(:completed_at => Time.now)
     self.build_volley(:player_id => next_player.id)
   end
-   
+
   def notify_players
     players.each do |player|
       Twitter.update("@#{player.twitter_name} New Volley: #{self.name} ") if player.twitter_name
     end
   end
+
+  def possible_admins
+    users = players.map(&:user)
+    (users << admin).uniq
+  end
+  
 end

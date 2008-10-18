@@ -13,18 +13,43 @@
   <%=h @match.description %>
 </p>
 
-<% if !@match.volleys.blank? %>
+<h3>Players:</h3>
+<% if !@match.players.blank? %>
+<ul>
+  <% for user in @match.players.map(&:user) %>
+  <li><%= link_to(h(user.fullname), user) %></li>
+  <% end %>  
+</ul>
+<% else %>
+<p>No players yet for this match.</p>
+<% end %>
+
+<h3>Volleys</h3>
+<%- if !@match.volleys.blank? -%>
   <ul>
   <% for volley in @match.volleys %>
     <li>
-      <%=h volley.player.name %>
+      <%- if !volley.commits.blank? -%>
+      <ul>
+        <% for commit in volley.commits %>
+        <li>
+          <%= commit.player.user.fullname %>
+          <%= commit.message %>
+          </li>
+        <% end %>
+      </ul>
+      <%- else -%>
+      <%= link_to h(volley.player.user.fullname), volley.player.user %> hasn't made any commits yet.
+      <%- end -%>
     </li>
   <% end %>
   </ul>
-<% else %>
-  
-<% end %>
+<%- else -%>
+<p>No volleys have been served.</p>
+<%- end -%>
 
 
-<%= link_to 'Edit', edit_match_path(@match) %> |
-<%= link_to 'Back', matches_path %>
+<p>
+  <%= link_to "Back", matches_path %>
+  <% if @match.admin == current_user %>| <%= link_to "Edit", edit_match_path(@match) %><% end %>
+</p>

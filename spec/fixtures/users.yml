@@ -3,9 +3,9 @@ ambethia:
   nickname: ambethia
   email: ambethia@example.com
   url: http://ambethia.com
-  identity_url: http://ambethia.com
+  identity_url: http://ambethia.com/
   github_user: ambethia
-  time_zone: 
+  time_zone: Eastern Time (US & Canada)
 
 dedguy:
   fullname: James B Seaman
@@ -14,13 +14,13 @@ dedguy:
   url: http://dedguy.net
   identity_url: http://dedguy.myopenid.com/
   github_user: dedguy
-  time_zone: 
+  time_zone: Eastern Time (US & Canada)
   
 madcowley:
   fullname: Matthew Cowley
   nickname: madcowley
   email: madcowley@example.com
   url: http://madcowley.com
-  identity_url: http://madcowley.pip.verisignlabs.com
+  identity_url: http://madcowley.pip.verisignlabs.com/
   github_user: madcowley
-  time_zone: MyString
+  time_zone: Eastern Time (US & Canada)

@@ -6,13 +6,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    authenticate_with_open_id(params[:opendid_url], :required => [:nickname, :email], :optional => [:fullname]) do |result, identity_url, registration|
+    authenticate_with_open_id(params[:opendid_url], :required => [:nickname, :email], :optional => [:fullname, :timezone]) do |result, identity_url, registration|
       if result.successful?
         @user = User.find_or_initialize_by_identity_url(identity_url)
         if @user.new_record?
-          @user.fullname = registration["fullname"]
-          @user.nickname = registration["nickname"]
-          @user.email    = registration["email"]
+          @user.fullname  = registration["fullname"]
+          @user.nickname  = registration["nickname"]
+          @user.email     = registration["email"]
+          @user.time_zone = ActiveSupport::TimeZone::MAPPING.index(registration["timezone"])
           @user.save(false)
           self.current_user = @user
           redirect_to ["edit", @user]
