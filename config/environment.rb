@@ -25,6 +25,7 @@ Rails::Initializer.run do |config|
   # config.gem "bj"
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "aws-s3", :lib => "aws/s3"
+  config.gem "ruby-openid", :lib => "openid"
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
@@ -49,7 +50,7 @@ Rails::Initializer.run do |config|
   # no regular words or you'll be exposed to dictionary attacks.
   config.action_controller.session = {
     :session_key => '_code_tennis_session',
-    :secret      => 'b01bdde868a61f2d1f7724d3af95ab62330adb165d81d4cbcdb95348cc0b5e6b05eb78fdadf578f25d2c7a84035c1746c923c7c97f41b4bc968e01bf87150b16'
+    :secret      => '12c889e09cbc11ddad8b0800200c9a66'
   }
 
   # Use the database for sessions instead of the cookie-based default,
