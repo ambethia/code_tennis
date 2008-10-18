@@ -1,0 +1,38 @@
+<p>
+  <b>Fullname:</b>
+  <%=h @user.fullname %>
+</p>
+
+<p>
+  <b>Nickname:</b>
+  <%=h @user.nickname %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @user.email %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%=h @user.url %>
+</p>
+
+<p>
+  <b>Identity url:</b>
+  <%=h @user.identity_url %>
+</p>
+
+<p>
+  <b>Github user:</b>
+  <%=h @user.github_user %>
+</p>
+
+<p>
+  <b>Time zone:</b>
+  <%=h @user.time_zone %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

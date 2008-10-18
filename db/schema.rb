@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081018025534) do
+ActiveRecord::Schema.define(:version => 20081018031442) do
 
   create_table "matches", :force => true do |t|
     t.integer  "admin_id"
@@ -17,6 +17,18 @@ ActiveRecord::Schema.define(:version => 20081018025534) do
     t.text     "description"
     t.string   "github_user"
     t.string   "github_project"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "fullname"
+    t.string   "nickname"
+    t.string   "email"
+    t.string   "url"
+    t.string   "identity_url"
+    t.string   "github_user"
+    t.string   "time_zone"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
