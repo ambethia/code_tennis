@@ -14,7 +14,7 @@ describe Match do
   end
   
   it "should know the active Volley" do
-    @match.active_volley.should == @volley
+    @match.active_volley.should == volleys(:ambethia_frisbee)
   end
 
   describe "with github push" do

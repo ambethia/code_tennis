@@ -1,10 +1,11 @@
-ambethia_frisbee:
-  player: ambethia_frisbee
-  match: binary_frisbee
-  completed_at: <%= 1.day.ago %>
-
 dedguy_frisbee:
   player: dedguy_frisbee
+  match: binary_frisbee
+  created_at: <%= 2.days.ago %>
+  completed_at: <%= 1.days.ago %>
+
+ambethia_frisbee:
+  player: ambethia_frisbee
   match: binary_frisbee
 
 dedguy_hospital:

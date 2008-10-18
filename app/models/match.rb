@@ -22,6 +22,8 @@ class Match < ActiveRecord::Base
     commits.each do |commit|
       user = self.users.find_by_email(commit["author"]["email"])
       self.active_volley.commits.create({
+        :guid    => commit["id"],
+        :url     => commit["url"],
         :message => commit["message"],
         :player  => self.players.find_by_user_id(user.id)
       })

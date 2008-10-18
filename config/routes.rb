@@ -17,6 +17,6 @@ ActionController::Routing::Routes.draw do |map|
     map.users "/users",     :action   => "index"
     map.user  "/users/:id", :action   => "show"
   end
-
-  map.root :controller => "matches"
+  
+  map.root :controller => "matches", :action => "index"
 end

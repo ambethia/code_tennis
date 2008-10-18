@@ -1,6 +1,6 @@
 <h1>User Details</h1>
 
-<% form_for(@user) do |f| %>
+<% form_for(:user, @user, current_user_path, :html => {:method => :put}) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -31,11 +31,8 @@
     <%= f.label :time_zone %><br />
     <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones %>
   </p>
-  <p>
 
-    <%= f.submit "Update" %>
+  <p>
+    <%= f.submit "Update" %> <%= link_to "Cancel", @user %>
   </p>
 <% end %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>

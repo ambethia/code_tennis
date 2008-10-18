@@ -1,0 +1,18 @@
+dedguy_frisbee_broke:
+  message: Borked some shit.
+  guid: 95f507a6127ba198564fc8c3e721ac38ee212a14
+  player: dedguy_frisbee
+  url: http://github.com/ambethia/binary-frisbee/commit/95f507a6127ba198564fc8c3e721ac38ee212a14
+  id: "9"
+  volley: dedguy_frisbee
+  created_at: <%= 36.hours.ago %>
+  updated_at: <%= 36.hours.ago %>
+
+dedguy_frisbee_fixed:
+  message: Fixxded it. [volley]
+  guid: 0d3e47da8f6d782675238982a491ee79ff1528ed
+  player: dedguy_frisbee
+  url: http://github.com/ambethia/binary-frisbee/commit/95f507a6127ba198564fc8c3e721ac38ee212a14
+  volley: dedguy_frisbee
+  created_at: <%= 24.hours.ago %>
+  updated_at: <%= 24.hours.ago %>

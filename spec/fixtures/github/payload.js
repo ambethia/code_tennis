@@ -15,7 +15,7 @@
   "commits": [
     {
       "id": "95f507a6127ba198564fc8c3e721ac38ee212a14",
-      "url": "http://github.com/defunkt/github/commit/41a212ee83ca127e3c8cf465891ab7216a705f59",
+      "url": "http://github.com/ambethia/cuniculi-cavum/commit/95f507a6127ba198564fc8c3e721ac38ee212a14",
       "author": {
         "email": "ambethia@example.com",
         "name": "Jason L Perry" 
@@ -26,7 +26,7 @@
     },
     {
       "id": "0d3e47da8f6d782675238982a491ee79ff1528ed",
-      "url": "http://github.com/defunkt/github/commit/de8251ff97ee194a289832576287d6f8ad74e3d0",
+      "url": "http://github.com/ambethia/cuniculi-cavum/commit/0d3e47da8f6d782675238982a491ee79ff1528ed",
       "author": {
         "email": "ambethia@example.com",
         "name": "Jason L Perry" 

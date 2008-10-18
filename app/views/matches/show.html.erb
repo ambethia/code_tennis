@@ -30,12 +30,14 @@
   <% for volley in @match.volleys %>
     <li>
       <%- if !volley.commits.blank? -%>
+      <%= link_to h(volley.player.user.fullname), volley.player.user %>
       <ul>
         <% for commit in volley.commits %>
         <li>
-          <%= commit.player.user.fullname %>
-          <%= commit.message %>
-          </li>
+          <%= link_to h(commit.guid), h(commit.url) %>
+          <%= link_to h(commit.player.user.fullname), commit.player.user.github_url %>
+          <%= link_to h(commit.message), h(commit.url) %>
+        </li>
         <% end %>
       </ul>
       <%- else -%>
