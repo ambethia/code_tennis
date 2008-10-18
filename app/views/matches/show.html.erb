@@ -25,6 +25,11 @@
 <% end %>
 
 <h3>Volleys</h3>
+<% if current_user == @match.admin %>
+	<%= link_to 'End current volley', complete_match_path(@match)  %>
+<% end %>
+
+
 <%- if !@match.volleys.blank? -%>
   <ul>
   <% for volley in @match.volleys %>

@@ -93,4 +93,15 @@ class MatchesController < ApplicationController
 
     head :ok
   end
+  
+  def complete
+    @match = Match.find(params[:id])
+    if current_user == @match.admin
+      @match.new_volley
+      flash[:notice] = 'Volley completed.'
+    else
+      flash[:error] = "Please ask the admin to do this for you."
+    end
+    redirect_to match_path(@match)
+  end
 end
