@@ -1,5 +1,7 @@
 class Match < ActiveRecord::Base
   belongs_to :admin, :class_name => "User"
+  has_many :players
+  has_many :volleys
 
   validates_presence_of :admin_id
   validates_presence_of :name

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081018084533) do
+ActiveRecord::Schema.define(:version => 20081018085512) do
 
   create_table "matches", :force => true do |t|
     t.integer  "admin_id"
@@ -34,6 +34,13 @@ ActiveRecord::Schema.define(:version => 20081018084533) do
     t.integer "timestamp",  :null => false
     t.string  "server_url"
     t.string  "salt",       :null => false
+  end
+
+  create_table "players", :force => true do |t|
+    t.integer  "match_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|

@@ -6,8 +6,12 @@ describe "/volleys/index.html.erb" do
   before(:each) do
     assigns[:volleys] = [
       stub_model(Volley,
+        :player_id => 1,
+        :match_id  => 1
       ),
       stub_model(Volley,
+        :player_id => 2,
+        :match_id  => 1
       )
     ]
   end

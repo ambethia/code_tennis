@@ -7,8 +7,7 @@ describe "/matches/show.html.erb" do
     assigns[:match] = @match = stub_model(Match,
       :name           => "Puppy Hospital",
       :description    => "The average salary for puppy hospital jobs is $43,000.",
-      :github_user    => "ambethia",
-      :github_project => "puppy-hospital",
+      :github_url     => "http://github.com/ambethia/puppy-hospital",
       :admin          => stub_model(User, :fullname => "Jason L Perry")
     )
   end
@@ -17,4 +16,3 @@ describe "/matches/show.html.erb" do
     render "/matches/show.html.erb"
   end
 end
-

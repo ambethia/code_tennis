@@ -5,6 +5,8 @@ describe "/volleys/show.html.erb" do
   
   before(:each) do
     assigns[:volley] = @volley = stub_model(Volley,
+      :player_id => 1,
+      :match_id  => 1
     )
   end
 

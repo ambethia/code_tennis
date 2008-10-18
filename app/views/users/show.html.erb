@@ -15,17 +15,17 @@
 
 <p>
   <b>Url:</b>
-  <%= link_to h(@user.url) %>
+  <%= link_to h(@user.url), h(@user.url) %>
 </p>
 
 <p>
   <b>Open ID:</b>
-  <%= link_to h(@user.identity_url) %>
+  <%= link_to h(@user.identity_url), h(@user.identity_url) %>
 </p>
 
 <p>
   <b>Github:</b>
-  <%=h @user.github_user %>
+  <%= link_to h(@user.github_user), h(@user.github_url) %>
 </p>
 
 <p>
