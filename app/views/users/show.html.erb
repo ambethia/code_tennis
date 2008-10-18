@@ -1,20 +1,28 @@
+<h1><%=h @user.display_name %></h1>
+
+<div id="matches">
+	<h3>Matches</h3>
+	<ul>
+		<% if @user.matches.any? %>
+			<% @user.matches.each do |match| %>
+				<li><%= link_to h(match.name), match_path(match) %></li>
+			<% end %>
+		<% else %>
+		<li><%= h(@user.display_name) %> is not currently playing.</li>
+		<% end %>
+	</ul>
+</div>
+
+<div id="user_details">
 <p>
-  <b>Fullname:</b>
   <%=h @user.fullname %>
 </p>
-
-<p>
-  <b>Nickname:</b>
-  <%=h @user.nickname %>
-</p>
-
 <p>
   <b>Email:</b>
-  <%=h @user.email %>
+  <%= mail_to h(@user.email), h(@user.email), :encode => :javascript %>
 </p>
 
 <p>
-  <b>Url:</b>
   <%= link_to h(@user.url), h(@user.url) %>
 </p>
 
@@ -33,6 +41,6 @@
   <%=h @user.time_zone %>
 </p>
 
-
+</div>
 <%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'All Users', users_path %>

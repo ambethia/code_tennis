@@ -1,32 +1,9 @@
-<h1>Listing users</h1>
+<h1>All Users</h1>
 
-<table>
-  <tr>
-    <th>Fullname</th>
-    <th>Nickname</th>
-    <th>Email</th>
-    <th>Url</th>
-    <th>Identity url</th>
-    <th>Github user</th>
-    <th>Time zone</th>
-  </tr>
+<ul>
+	<% @users.each do |user| %>
+		<li><%= link_to h(user.display_name), user_path(user) %></li>
+	<% end %>
+</ul>
 
-<% for user in @users %>
-  <tr>
-    <td><%=h user.fullname %></td>
-    <td><%=h user.nickname %></td>
-    <td><%=h user.email %></td>
-    <td><%=h user.url %></td>
-    <td><%=h user.identity_url %></td>
-    <td><%=h user.github_user %></td>
-    <td><%=h user.time_zone %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
 
-<br />
-
-<%= link_to 'New user', new_user_path %>

@@ -16,4 +16,9 @@ class User < ActiveRecord::Base
   def github_url
     "http://github.com/#{github_user}"
   end
+  
+  def display_name
+    self.nickname? ? self.nickname : self.fullname
+    
+  end
 end
