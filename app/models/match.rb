@@ -25,6 +25,24 @@ class Match < ActiveRecord::Base
         :message => commit["message"],
         :player  => self.players.find_by_user_id(user.id)
       })
+      new_volley if commit["message"] =~ /volley/
+    end
+  end
+  
+  def new_volley
+    current_player = self.active_volley.player
+    if current_player.nil?
+      next_player = players.find(:first)
+    else
+      next_player    = players.find(:first, :conditions => "id != #{current_player.id}")
+    end
+    self.active_volley.update_attributes(:completed_at => Time.now)
+    self.build_volley(:player_id => next_player.id)
+  end
+   
+  def notify_players
+    players.each do |player|
+      Twitter.update("@#{player.twitter_name} New Volley: #{self.name} ") if player.twitter_name
     end
   end
 end
