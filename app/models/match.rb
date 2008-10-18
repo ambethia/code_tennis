@@ -42,7 +42,7 @@ class Match < ActiveRecord::Base
    
   def notify_players
     players.each do |player|
-      Twitter.update("@#{player.twitter_name} New Volley: #{self.name} ") if player.twitter_name
+      Twitter.update("@#{player.twitter_name} New Volley: <a href=\"http://#{ENV['HOSTNAME']}/matches/#{self.id}\">#{self.name }</a> ") if player.twitter_name
     end
   end
 end
