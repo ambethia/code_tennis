@@ -1,28 +1,17 @@
+<h2><%=h @match.name %></h2>
+
 <p>
-  <b>Admin:</b>
-  <%=h @match.admin_id %>
+  <b>Admin:</b> <%= link_to h(@match.admin.fullname), @match.admin %>
 </p>
 
 <p>
-  <b>Name:</b>
-  <%=h @match.name %>
+  <b>Github:</b> <%= link_to h(@match.github_url) %>
 </p>
 
 <p>
   <b>Description:</b>
   <%=h @match.description %>
 </p>
-
-<p>
-  <b>Github user:</b>
-  <%=h @match.github_user %>
-</p>
-
-<p>
-  <b>Github project:</b>
-  <%=h @match.github_project %>
-</p>
-
 
 <%= link_to 'Edit', edit_match_path(@match) %> |
 <%= link_to 'Back', matches_path %>

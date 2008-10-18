@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe MatchesController do
 
   def mock_match(stubs={})
-    @mock_match ||= mock_model(Match, stubs)
+    @mock_match ||= mock_model(Match, {:"admin=" => stub_model(User)}.merge(stubs))
   end
   
   describe "responding to GET index" do

@@ -5,11 +5,11 @@ describe "/matches/edit.html.erb" do
   
   before(:each) do
     assigns[:match] = @match = stub_model(Match,
-      :new_record? => false,
-      :name => "value for name",
-      :description => "value for description",
-      :github_user => "value for github_user",
-      :github_project => "value for github_project"
+      :new_record?    => false,
+      :name           => "Puppy Hospital",
+      :description    => "The average salary for puppy hospital jobs is $43,000.",
+      :github_user    => "ambethia",
+      :github_project => "puppy-hospital"
     )
   end
 

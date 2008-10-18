@@ -5,19 +5,16 @@ describe "/matches/show.html.erb" do
   
   before(:each) do
     assigns[:match] = @match = stub_model(Match,
-      :name => "value for name",
-      :description => "value for description",
-      :github_user => "value for github_user",
-      :github_project => "value for github_project"
+      :name           => "Puppy Hospital",
+      :description    => "The average salary for puppy hospital jobs is $43,000.",
+      :github_user    => "ambethia",
+      :github_project => "puppy-hospital",
+      :admin          => stub_model(User, :fullname => "Jason L Perry")
     )
   end
 
-  it "should render attributes in <p>" do
+  it "should render attributes" do
     render "/matches/show.html.erb"
-    response.should have_text(/value\ for\ name/)
-    response.should have_text(/value\ for\ description/)
-    response.should have_text(/value\ for\ github_user/)
-    response.should have_text(/value\ for\ github_project/)
   end
 end
 

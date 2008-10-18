@@ -41,6 +41,7 @@ class MatchesController < ApplicationController
   # POST /matches.xml
   def create
     @match = Match.new(params[:match])
+    @match.admin = current_user
 
     respond_to do |format|
       if @match.save

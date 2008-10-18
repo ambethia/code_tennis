@@ -26,7 +26,7 @@ describe "/users/edit.html.erb" do
       with_tag('input#user_url[name=?]', "user[url]")
       with_tag('input#user_identity_url[name=?]', "user[identity_url]")
       with_tag('input#user_github_user[name=?]', "user[github_user]")
-      with_tag('input#user_time_zone[name=?]', "user[time_zone]")
+      with_tag('select#user_time_zone[name=?]', "user[time_zone]")
     end
   end
 end

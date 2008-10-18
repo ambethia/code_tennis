@@ -1,15 +1,13 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+binary_frisbee:
+  admin: ambethia
+  name: Binary Frisbee
+  description: The ill-fated first attempt.
+  github_user: ambethia
+  github_project: binary-frisbee
 
-one:
-  admin_id: 1
-  name: MyString
-  description: MyText
-  github_user: MyString
-  github_project: MyString
-
-two:
-  admin_id: 1
-  name: MyString
-  description: MyText
-  github_user: MyString
-  github_project: MyString
+puppy_hospital:
+  admin: dedguy
+  name: Puppy Hospital
+  description: The average salary for puppy hospital jobs is $43,000.
+  github_user: dedguy
+  github_project: puppy-hospital
