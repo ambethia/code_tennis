@@ -32,6 +32,20 @@
     <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones %>
   </p>
 
+  <ul>
+		<%- @avatars.each do |avatar| -%>
+			<li> <%= avatar.name %> <%= image_tag(avatar.filename,:alt => avatar.name, :class => 'avatar', :size => '175x175')%></li>
+		<%- end -%>
+  </ul>
+
+  <p>
+	<select name="user[avatar_id]" id="user_avatar_id">
+  		<%- @avatars.each do |avatar| -%>
+			<option value="<%= avatar.id %>"><%= avatar.name %></option>
+		<%- end -%>
+  	</select>
+  </p>
+
   <%= f.label :avatar %><br />
   <% @avatars.each do |avatar| %>
 	<%= f.radio_button :avatar_id, avatar.id %>
