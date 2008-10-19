@@ -193,8 +193,14 @@ body, table, textarea {
   vertical-align: baseline;
 }
 
-/* Users ------------------------------------------------------------------ */
-.users {}
+/* Forms ------------------------------------------------------------------ */
+
+
+#form h1 {
+  font-size: 3.5em;
+  padding: 1em 0 .5em;
+  text-align: center;
+}
 
   
 /* Splash ----------------------------------------------------------------- */
@@ -413,13 +419,13 @@ td.players {
 }
 
 #new_match,#new_user,#edit_match,#edit_user {
-  width: 375px;
+/*  width: 375px;*/
   margin: 0 auto;
   text-align: center;
 }
 
 #new_match,#new_user,#edit_match,#edit_user p {
-  text-align: center;
+/*  text-align: center;*/
   font-size: 1.5em;
   font-weight: bold;
 }
