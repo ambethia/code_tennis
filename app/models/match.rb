@@ -4,7 +4,6 @@ class Match < ActiveRecord::Base
   named_scope :incomplete,    :conditions => {"matches.completed_at" => nil}
   named_scope :complete,      :conditions =>  "matches.completed_at IS NOT NULL"
   
-
   belongs_to :admin, :class_name => "User"
   has_many :players
   has_many :users, :through => :players
@@ -24,9 +23,7 @@ class Match < ActiveRecord::Base
   end
   
   def after_create
-    if admin_is_player && (admin_is_player != "0") # 0/1 checkbox, ug.
-      users << admin
-    end
+    users << admin if admin_is_player && (admin_is_player != "0") # 0/1 checkbox, ug.
   end
 
   def github_url
@@ -47,15 +44,23 @@ class Match < ActiveRecord::Base
 
   def push(payload)
     commits = ActiveSupport::JSON.decode(payload)["commits"]
+    dirty = false
     commits.each do |commit|
       user = self.users.find_by_email(commit["author"]["email"])
-      self.active_volley.commits.create({
-        :guid    => commit["id"],
-        :url     => commit["url"],
-        :message => commit["message"],
-        :player  => self.players.find_by_user_id(user.id)
-      })
-      new_volley if commit["message"] =~ /volley/
+      if user
+        dirty = true
+        self.active_volley.commits.create({
+          :guid    => commit["id"],
+          :url     => commit["url"],
+          :message => commit["message"],
+          :player  => self.players.find_by_user_id(user.id)
+        })
+        new_volley if commit["message"] =~ /volley/
+      end
+    end
+    if dirty
+      self.updated_at = Time.now
+      self.save!
     end
   end
 

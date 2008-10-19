@@ -50,5 +50,14 @@ describe Match do
     end
 
   end
+  
+  describe "volley receives a commit" do
+    it "should update the match updated_at timestamp" do
+      @payload = File.open(fixture_path + "/github/payload.js").read
+      @match.should_receive(:updated_at=)
+      @match.push(@payload)
+    end
+  end
+  
 end
 

@@ -7,6 +7,7 @@ ambethia:
   github_user: ambethia
   twitter_name: ambethia
   time_zone: Eastern Time (US & Canada)
+  avatar: panda
 
 dedguy:
   fullname: James B Seaman
@@ -17,6 +18,7 @@ dedguy:
   github_user: dedguy
   twitter_name: dedguy
   time_zone: Eastern Time (US & Canada)
+  avatar: shaman
   
 madcowley:
   fullname: Matthew Cowley
@@ -27,3 +29,4 @@ madcowley:
   github_user: madcowley
   twitter_name: madcowley
   time_zone: Eastern Time (US & Canada)
+  avatar: viking
