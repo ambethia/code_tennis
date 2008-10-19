@@ -1,0 +1,55 @@
+<h1>Code Tennis Help</h1>
+
+<h2>Tools of the game</h2>
+
+<ul>
+	<li>twitter <%= image_tag("twitter.png", :alt => '', :size => "50x50") %></li>
+	<li>github  <%= image_tag("github.png",  :alt => '', :size => "50x50") %></li>
+	<li>openid  <%= image_tag("openid-logo-square.png", :alt => '', :size => "50x50") %></li>
+</ul>
+
+<h2>Signing Up</h2>
+
+<p>To log into CodeTennis, just sign in with your OpenId.</p>  
+
+<p>Not sure what OpenId is?  You probably already have one, even if you don't know it. 
+	There are some instructions on the CodeTennis sign-up page, but if you don't 
+	even know how to spell OpenID then go on over to 
+	<%= link_to "myopenid.com", "http://myopenid.com" %> and sign yourself up.</p>
+
+<h2>Twitter Notifications</h2>
+
+<p>CodeTennis sends notifications via twitter.  If you don't have a Twitter account, 
+	sign up over at <%= link_to 'twitter.com', "http://twitter.com" %>.</p> 
+
+<p>You'll also want to follow the twitter user code_tennis.</p>
+
+
+<h2>Application Setup</h2>
+
+<p>CodeTennis works with github, so the application you'll be playing with needs 
+	to be hosted there. Instructions are available at 
+	<%= link_to "github", "http://github.com/guides" %> if you need them.</p>
+
+<p>Once you've got your app set up on github, you'll need to tell github to notify CodeTennis of new commits.  Here's how:
+<ul>
+<li>Go to the your app's home page on github, and click the edit button;</li>
+<li>Click next to "Post-Receive URL" to edit;</li>
+<li>Enter http://tampa-rb.r08.rails.rumble.com, and save.</li>
+</ul>
+</p>
+
+<p>Once all the players have signed up at CodeTennis, it's time to start a new match:
+<ul>
+<li>Click on "Matches" and then "Set up a new match";</li>
+<li>Enter a name and description for the match;</li>
+<li>Enter the github username and project, NOT the entire github project URL.</li>
+</ul>
+<%= image_tag("match_setup_github_details.jpg", :alt => "GitHub Match Setup") %>
+</p>
+<p>If you're one of the players, make sure "Include yourself as a player" is checked.</p>
+
+<p>To add another player, click on Users and then on the player you want. On that player's page, select the new match from the list and click 'Add'.</p>
+<%= image_tag("add_player_to_match.jpg", :alt => "Adding a player to a match.") %>
+
+
