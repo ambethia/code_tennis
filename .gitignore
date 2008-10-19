@@ -1,5 +1,6 @@
 .DS_Store
 config/database.yml
+config/twitter.yml
 coverage
 db/*.sqlite3
 doc/app/*

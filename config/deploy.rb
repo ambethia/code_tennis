@@ -17,6 +17,7 @@ set :run_method, :run
 namespace :deploy do
   task :custom_symlinks do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+    run "ln -nfs #{shared_path}/config/twitter.yml #{release_path}/config/twitter.yml"
   end
   
   desc "Restart Passenger"
@@ -32,3 +33,4 @@ end
 
 after "deploy:symlink", "deploy:custom_symlinks"
 after "deploy", "deploy:cleanup"
+before "deploy:migrate", "deploy:custom_symlinks"

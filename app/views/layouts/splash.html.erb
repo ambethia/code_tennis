@@ -11,29 +11,13 @@
 
 <div id="application">
 
-<div id="masthead">
-
-  <h1>Code Tennis</h1>
-  
-</div> <!-- END #masthead -->
-
 <div id="content" class="splash">
 
-<%= render "sessions/new" %>
 <%= image_tag "group.png", :size => "868x665", :alt => "The best party ever", :class => "center" %>
 
 </div> <!-- END #content -->
 
 <div id="foot">
-
-  <ul id="session">
-    <%- if logged_in? -%>
-      <li><%= link_to h(current_user.display_name), current_user_path %></li>
-      <li><%= link_to "Log Out", logout_path %></li>
-    <%- else -%>
-      <li><%= link_to "Log In / Register", login_path %></li>
-    <%- end -%>
-  </ul>
 
   <p id="copyright"><strong>Code Tennis.</strong> Copyright &copy; 2008 <a href="http://paint.itred.org">Paint.itRed</a>, Most rights reserved.</p>
   
