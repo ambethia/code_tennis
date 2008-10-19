@@ -15,7 +15,7 @@
       <%= h(commit.message) %>
     </td>
     <td>
-      Avatar here
+      <%= display_user_avatar(commit.player.user) %>
       <%= h(commit.player.name) %>
       <%= commit.created_at.strftime("%B #{commit.created_at.day.ordinalize}, %Y %I:%M %p") %>
     </td>
@@ -23,7 +23,7 @@
   <%- end -%>
   <%- else -%>
   <tr>
-    <td><%=h volley.player.name(:short => true) %> hasn't made any commits yet.</td>
+    <td>This player hasn't made any commits yet.</td>
   </tr>
   <%- end -%>
   

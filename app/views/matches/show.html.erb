@@ -12,9 +12,11 @@
   <b>Github:</b> <%= link_to h(@match.github_url), h(@match.github_url) %>
 </p>
 
+<%- if current_user == @match.admin -%>
 <p>
   <b>Github Post-Receive URL:</b> <%= push_match_url(@match) %>
 </p>
+<%- end -%>
 
 <p>
   <b>Description:</b>

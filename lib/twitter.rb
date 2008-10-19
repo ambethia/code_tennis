@@ -5,15 +5,15 @@ class Twitter
   # code from http://journal.mychores.co.uk/articles/2007/01/21/updating-twitter-from-ruby-rails
   def Twitter.update(message)
     twitter_config = YAML.load(File.open("#{RAILS_ROOT}/config/twitter.yml"))
-    TWITTER_USER = twitter_config["twitter_user"]
-    TWITTER_PWD  = twitter_config["twitter_pwd"]
+    twitter_user = twitter_config["twitter_user"]
+    twitter_pwd  = twitter_config["twitter_pwd"]
     RAILS_DEFAULT_LOGGER.debug("*** twitter update #{message}")
     success = false
     if ENV['RAILS_ENV'] == 'production'
       begin
           url = URI.parse('http://twitter.com/statuses/update.xml')
           req = Net::HTTP::Post.new(url.path)
-          req.basic_auth TWITTER_USER,TWITTER_PWD
+          req.basic_auth twitter_user,twitter_pwd
           req.set_form_data({'status' => message})
 
           begin
