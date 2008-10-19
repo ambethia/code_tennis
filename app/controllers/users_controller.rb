@@ -22,8 +22,14 @@ class UsersController < ApplicationController
   end
 
   # GET /user
+  def new
+    @avatars = Avatar.find(:all)
+  end
+  
+  # GET /user
   def edit
-    @user = current_user
+    @user    = current_user
+    @avatars = Avatar.find(:all)
   end
 
   # PUT /user
@@ -53,4 +59,5 @@ class UsersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
 end

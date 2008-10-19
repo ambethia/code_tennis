@@ -7,4 +7,8 @@ module ApplicationHelper
     end.join
   end
 
+  def display_user_avatar(user)
+    user.avatar.nil? ? '' : image_tag(user.avatar.filename,:alt => user.display_name, :class => 'avatar')
+  end
+
 end

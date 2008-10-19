@@ -8,4 +8,5 @@ class Player < ActiveRecord::Base
 
   delegate :twitter_name, :to => :user
   delegate :display_name, :to => :user 
+  delegate :avatar,       :to => :user
 end

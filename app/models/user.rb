@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
-  has_many :players
-  has_many :matches, :through => :players
-  has_many :administrations, :class_name => "Match", :foreign_key => :admin_id
+  has_many   :players
+  has_many   :matches, :through => :players
+  has_many   :administrations, :class_name => "Match", :foreign_key => :admin_id
+  belongs_to :avatar
   
   validates_uniqueness_of :identity_url
   validates_presence_of   :identity_url

@@ -1,0 +1,12 @@
+<p>
+  <b>Name:</b>
+  <%=h @avatar.name %>
+</p>
+<p>
+  <b>Filename:</b>
+  <%=h @avatar.filename %>
+</p>
+<%= image_tag(@avatar.filename) %>
+
+<%= link_to 'Edit', edit_avatar_path(@avatar) %> |
+<%= link_to 'Back', avatars_path %>

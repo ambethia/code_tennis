@@ -1,0 +1,1 @@
+insert into avatars (name, filename) values ('Panda', 'panda_avatar.jpg');
