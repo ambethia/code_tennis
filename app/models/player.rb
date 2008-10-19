@@ -14,4 +14,8 @@ class Player < ActiveRecord::Base
   def name(options = {})
     options[:short] ? user.nickname : user.display_name
   end
+  
+  def after_create
+    match.volley! if match.volleys.empty?
+  end
 end

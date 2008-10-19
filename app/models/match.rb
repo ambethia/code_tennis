@@ -24,7 +24,9 @@ class Match < ActiveRecord::Base
   end
   
   def after_create
-    users << admin if admin_is_player && (admin_is_player != "0") # 0/1 checkbox, ug.
+    if admin_is_player && (admin_is_player != "0") # 0/1 checkbox, ug.
+      users << admin
+    end
   end
 
   def github_url
@@ -36,15 +38,11 @@ class Match < ActiveRecord::Base
   end
   
   def current_player
-    self.active_volley.player
+    self.active_volley ? self.active_volley.player : players.first
   end
 
   def next_player
-    if current_player.nil?
-      next_player = players.find(:first)
-    else
-      next_player = players.find(:first, :conditions => "id != #{current_player.id}")
-    end
+    players.first(:conditions => "id != #{current_player.id}")
   end
 
   def push(payload)
@@ -70,8 +68,8 @@ class Match < ActiveRecord::Base
   end
 
   def volley!
-    player = self.next_player
-    self.active_volley.update_attribute :completed_at, Time.now
+    player = self.next_player || self.current_player
+    self.active_volley.update_attribute(:completed_at, Time.now) unless volleys.empty?
     self.volleys.create(:player => player) unless complete?
     Twitter.update("@#{player.twitter_name} You're up for the next volley on #{self.name} (http://#{ENV['HOSTNAME']}/matches/#{self.id})") if player.twitter_name
   end
