@@ -119,6 +119,13 @@ ul.tools li {
 
 /* Content ---------------------------------------------------------------- */
 
+#home {
+  width: 475px;
+  margin: 0 auto;
+  font-size: 1.25em;
+  text-align: center;
+}
+
 #content {
   position: relative;
   color: #333;
