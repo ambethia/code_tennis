@@ -14,7 +14,7 @@ describe MatchesController do
   describe "responding to GET index" do
 
     it "should expose all matches as @matches" do
-      Match.should_receive(:find).with(:all, {:offset=>0, :limit=>20}).and_return([mock_match])
+      Match.should_receive(:paginate).with(:page => nil, :per_page => 20).and_return([mock_match])
       get :index
       assigns[:matches].should == [mock_match]
     end
@@ -23,7 +23,7 @@ describe MatchesController do
   
       it "should render all matches as xml" do
         request.env["HTTP_ACCEPT"] = "application/xml"
-        Match.should_receive(:find).with(:all, {:offset=>0, :limit=>20}).and_return(matches = mock("Array of Matches"))
+        Match.should_receive(:paginate).with(:page => nil, :per_page => 20).and_return(matches = mock("Array of Matches"))
         matches.should_receive(:to_xml).and_return("generated XML")
         get :index
         response.body.should == "generated XML"
