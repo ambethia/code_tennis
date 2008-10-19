@@ -1,0 +1,23 @@
+shaman:
+  name:     Shaman
+  filename: shaman.png
+
+viking:
+  name:     Viking
+  filename: viking.png
+
+robot:
+  name:     Robot
+  filename: robot.png
+
+panda:
+  name:     Panda
+  filename: panda.png
+
+girl:
+  name:     Girl
+  filename: girl.png
+
+ninja:
+  name:     Ninja
+  filename: ninja.png

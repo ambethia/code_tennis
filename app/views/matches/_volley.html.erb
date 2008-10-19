@@ -15,7 +15,7 @@
       <%= h(commit.message) %>
     </td>
     <td>
-      <%= display_user_avatar(commit.player.user) %>
+      <%= display_user_avatar(commit.player.user, :small) %>
       <%= h(commit.player.name) %>
       <%= commit.created_at.strftime("%B #{commit.created_at.day.ordinalize}, %Y %I:%M %p") %>
     </td>
