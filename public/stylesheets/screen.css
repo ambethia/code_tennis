@@ -102,12 +102,12 @@ body, table, textarea {
 
 #content {
   position: relative;
-  background-color: #eee;
   color: #333;
   padding: 10px;
   font-size: 1em;
   _height:1%;
   overflow:auto;
+  background: #eee url(../images/watermark.png) no-repeat scroll center center;
 }
 
 #content p, #content li {
@@ -187,6 +187,8 @@ body, table, textarea {
   vertical-align: baseline;
 }
 
+/* Users ------------------------------------------------------------------ */
+.users {}
 
   
 /* Splash ----------------------------------------------------------------- */
@@ -318,7 +320,7 @@ table th {
 }
 
 table td {
-  background: #fff;
+  background: transparent;
   padding: 0 6px;
   height: 24px;
 }
@@ -331,27 +333,47 @@ table td {
   padding: 0 20px;
 }
 
-.matches td {
-  background-color: #eee;
-}
-
 td.avatar {
-  width: 175px;
-  height: 175px;
+  width: 100px;
+  height: 100px;
   background-color: #ccc;
 }
 
 td.match-name {
-  font-size: 3em;
+  font-size: 2em;
   font-style: bold;
+  text-transform: uppercase;
+  padding: 0 10px;
 }
 
 td.date-start,td.date-updated {
-  font-size: 1.75em;
+  font-size: 1.5em;
   padding: 5px 10px;
 }
 
 td.players {
-  font-size: 1.75em;
+  font-size: 1.5em;
   padding: 5px 10px;
 }
+
+#new_match,#new_user,#edit_match,#edit_user {
+  width: 375px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#new_match,#new_user,#edit_match,#edit_user p {
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+input[type=text],textarea {
+  width: 375px;
+  filter:alpha(opacity=50);
+  -moz-opacity:0.5;
+  -khtml-opacity: 0.5;
+  opacity: 0.5;
+  padding: .5em;
+
+}  

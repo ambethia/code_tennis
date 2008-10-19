@@ -1,6 +1,6 @@
 <h1>User Details</h1>
 
-<% form_for(:user, @user, current_user_path, :html => {:method => :put}) do |f| %>
+<% form_for(:user, @user, current_user_path, :html => {:method => :put, :id => "edit_user"}) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -35,12 +35,11 @@
     <%= f.label :time_zone %><br />
     <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones %>
   </p>
-  <%= f.label :avatar %><br />
-  <% Avatar.all.each do |avatar| %>
-	<%= f.radio_button :avatar_id, avatar.id %>
-	<%= image_tag(avatar.filename, :alt => avatar.name) %>
-  <% end %>
   <p>
-    <%= f.submit "Update" %> <%= link_to "Cancel", @user %>
+    <%= f.label :avatar_id %><br />
+    <%= f.select :avatar_id, Avatar.all.map {|a| [a.name, a.id]} %>
   </p>
+
+  <span><%= f.submit "Update" %> <%= link_to "Cancel", @user %></span>
+
 <% end %>
