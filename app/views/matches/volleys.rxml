@@ -1,6 +1,15 @@
 xml.instruct!
 xml.data do
   @match.volleys.each do |volley|
-	  xml.event(commit_messages(volley), :start => volley.created_at.strftime("%B %d %Y %H:%M:%S %Z"), :end => volley.updated_at.strftime("%B %d %Y %H:%M:%S %Z"), :isDuration => true, :title => volley.player.display_name ) 
+    xml.event( commit_messages(volley),
+      :start => volley.created_at.strftime("%B %d %Y %H:%M:%S %Z"),
+      :end => volley.complete? ? volley.updated_at.strftime("%B %d %Y %H:%M:%S %Z") : Time.now,
+      :isDuration => true, :title => volley.player.display_name )
+    for commit in volley.commits
+      xml.event( "#{link_to(h(commit.message), h(commit.url))}",
+        :start => commit.created_at.strftime("%B %d %Y %H:%M:%S %Z"),
+        :isDuration => false, :title => "#{truncate(h(commit.guid), 9)} by #{commit.player.name}"
+      )
+    end
   end
 end

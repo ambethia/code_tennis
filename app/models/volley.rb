@@ -8,4 +8,8 @@ class Volley < ActiveRecord::Base
 
   validates_presence_of :player_id
   validates_presence_of :match_id
+
+  def complete?
+    !!(self.completed_at)
+  end
 end

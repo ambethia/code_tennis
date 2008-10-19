@@ -9,4 +9,8 @@ class Player < ActiveRecord::Base
   delegate :twitter_name, :to => :user
   delegate :display_name, :to => :user 
   delegate :avatar,       :to => :user
+  
+  def name(options = {})
+    options[:short] ? user.nickname : user.display_name
+  end
 end

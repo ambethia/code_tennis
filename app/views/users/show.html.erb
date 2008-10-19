@@ -28,7 +28,8 @@
 <p><%= h(@user.display_name) %> has not played in any past matches.</p>
 <%- end -%>
 
-<%- if logged_in? && current_user.administrations.with_openings.any? -%>
+<%- if logged_in? && current_user != @user -%>  
+<%- if current_user.administrations.with_openings.any? -%>
 <% form_tag(players_matches_path) do %>
   <%= hidden_field_tag :user_id, @user.id %>
   <p>
@@ -37,10 +38,10 @@
     <%= submit_tag "Add" %>
   </p>
 <%- end -%>
-<%- elsif logged_in? && current_user == @user -%>
+<%- else -%>
 <p>To play with this user, create a <%= link_to "new match", new_match_path %>.</p>
 <%- end -%>
-
+<%- end -%>
 </div>
 
 <div id="user_details">
