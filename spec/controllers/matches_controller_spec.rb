@@ -2,8 +2,13 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe MatchesController do
 
+  before(:each) do
+    @user = stub_model(User)
+    controller.stub!(:current_user).and_return(@user)
+  end
+
   def mock_match(stubs={})
-    @mock_match ||= mock_model(Match, {:"admin=" => stub_model(User)}.merge(stubs))
+    @mock_match ||= mock_model(Match, {:"admin=" => @user, :"admin" => @user}.merge(stubs))
   end
   
   describe "responding to GET index" do
@@ -179,5 +184,17 @@ describe MatchesController do
     end
   end
   
+  describe "as an unauthorized user" do
+
+    before(:each) do
+      Match.stub!(:find).and_return(mock_match(:admin => stub_model(User)))
+    end
+
+    it "should redirect to matches index" do
+      get :edit, :id => "1"
+      response.should redirect_to(matches_url)
+    end
+
+  end
 
 end
