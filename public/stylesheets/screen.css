@@ -16,9 +16,13 @@ fieldset, p, blockquote, th, td {
   padding: 0;
 }
 
-h1, h2, h3, h4, h5, h6, p, pre,
-blockquote, ul, ol, dl, address {
-  margin:  1.5em 0;
+h1, h2, h3, h4, h5, h6 {
+  margin:  0 0 1em 0;
+  padding: 0;
+}
+
+p, pre, blockquote, ul, ol, dl, address {
+  margin: 1.5em;
   padding: 0;
 }
 
@@ -303,6 +307,56 @@ body, table, textarea {
   background-color: #ECC;
 }
 
+/* Users ------------------------------------------------------------------- */
+
+#user_page h2 {
+  margin: 0.5em 2em 0 2em;
+  padding: 0.5em;
+  font-size: 3em;
+  text-align: center;
+  border-bottom: 3px solid #999;
+}
+
+#user_page h2 img {
+  padding-bottom: 0.5em;
+}
+
+#user_page p.website {
+  text-align: center;
+  font-size: 1.2em;
+}
+
+#user_badges td {
+  background: transparent;
+  text-align: center;
+  vertical-align: center;
+}
+
+#user_add {
+  margin: 0 auto;
+  text-align: center;
+  line-height: 2em;
+  padding: 1em;
+}
+
+#user_matches h3 {
+  font-size: 1.4em;
+}
+
+#user_matches {
+  text-align: center;
+}
+
+#user_matches ul {
+  margin: 0 auto;
+  width: 33%;
+}
+
+#user_matches li {
+  margin: 1em;
+  line-height: 0.8em;
+}
+
 /* Tables ------------------------------------------------------------------ */
 
 table {
@@ -316,7 +370,7 @@ table th {
 }
 
 table td {
-  background: #eee;
+  background: #999;
   padding: 0 6px;
   height: 24px;
 }

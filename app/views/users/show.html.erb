@@ -1,78 +1,66 @@
-<h2><%=h @user.display_name %></h2>
+<div id="user_page">
+  
+  <h2>
+  <%= display_user_avatar(@user, :large) %><br />
+  <%=h @user.display_name %>
+  </h2>
 
-<%= display_user_avatar(@user, :medium) %>
+  <div id="user_info">
 
-<div id="matches">
+    <%- if @user.url -%><p class="website"><%= link_to h(@user.url), h(@user.url) %></p><%- end -%>
 
-<h3>Matches</h3>
+    <table id="user_badges">
+      <td><a href="http://github.com/<%=h @user.github_user %>"><img src="/images/github.png" width="128" height="128" alt="Github"></a></td>
+      <td><a href="http://twitter.com/<%=h @user.twitter_name %>"><img src="/images/twitter.png" width="128" height="128" alt="Twitter"></a></td>
+    </table>
 
-<%- if @user.matches.incomplete.any? -%>
-<ul>
-<%- @user.matches.incomplete.each do |match| -%>
-  <li><%= link_to h(match.name), match_path(match) %></li>
-<%- end -%>
-</ul>
-<%- else -%>
-<p><%= h(@user.display_name) %> is not currently playing in any matches.</p>
-<%- end -%>
+  </div>
 
-<h4>Past Matches</h4>
+  <div id="user_matches">
 
-<%- if @user.matches.complete.any? -%>
-<ul>
-<%- @user.matches.complete.each do |match| -%>
-  <li><%= link_to h(match.name), match_path(match) %></li>
-<%- end -%>
-</ul>
-<%- else -%>
-<p><%= h(@user.display_name) %> has not played in any past matches.</p>
-<%- end -%>
+    <%- if logged_in? && current_user != @user -%> 
+    <div id="user_add">
+      <%- if current_user.administrations.with_openings.any? -%>
+      <% form_tag(players_matches_path) do %>
+        <%= hidden_field_tag :user_id, @user.id %>
+          Add this user to one of your Matches?<br/>
+          <%= select_tag :match_id, options_from_collection_for_select(current_user.administrations.with_openings, :id, :name) %>
+          <%= submit_tag "Add" %>
+      <%- end -%>
+      <%- else -%>
+      To play with this user, create a <%= link_to "new match", new_match_path %>.
+      <%- end -%>
+    </div> 
+    <%- end -%>
 
-<%- if logged_in? && current_user != @user -%>  
-<%- if current_user.administrations.with_openings.any? -%>
-<% form_tag(players_matches_path) do %>
-  <%= hidden_field_tag :user_id, @user.id %>
-  <p>
-    Add this user to one of your Matches?
-    <%= select_tag :match_id, options_from_collection_for_select(current_user.administrations.with_openings, :id, :name) %>
-    <%= submit_tag "Add" %>
-  </p>
-<%- end -%>
-<%- else -%>
-<p>To play with this user, create a <%= link_to "new match", new_match_path %>.</p>
-<%- end -%>
-<%- end -%>
-</div>
+    <h3>Matches</h3>
 
-<div id="user_details">
-<p>
-  Nickname: <%=h @user.nickname %>
-</p>
-<p>
-  <b>Email:</b>
-  <%= mail_to h(@user.email), h(@user.email), :encode => :javascript %>
-</p>
+    <%- if @user.matches.incomplete.any? -%>
+    <ul>
+    <%- @user.matches.incomplete.each do |match| -%>
+      <li>
+        <strong><%= link_to h(match.name), match_path(match) %></strong><br/>
+        <%= h(match.description) %>
+      </li>
+    <%- end -%>
+    </ul>
+    <%- else -%>
+    <p><%= h(@user.display_name) %> is not currently playing in any matches.</p>
+    <%- end -%>
 
-<%- if @user.url -%>
-<p>
-  <b>Website:</b>
-  <%= link_to h(@user.url), h(@user.url) %>
-</p>
-<%- end -%>
+    <%- if @user.matches.complete.any? -%>
+    <ul>
+    <%- @user.matches.complete.each do |match| -%>
+      <li>
+        <strong><%= link_to h(match.name), match_path(match) %></strong><br/>
+        <%= h(match.description) %>
+      </li>
+    <%- end -%>
+    </ul>
+    <%- else -%>
+    <p>This player hasn't played in any past matches.</p>
+    <%- end -%>      
 
-<p>
-  <b>Open ID:</b>
-  <%= link_to h(@user.identity_url), h(@user.identity_url) %>
-</p>
-
-<p>
-  <b>Github:</b>
-  <%= link_to h(@user.github_user), h(@user.github_url) %>
-</p>
-
-<p>
-  <b>Time zone:</b>
-  <%=h @user.time_zone %>
-</p>
-
+  </div>
+  
 </div>
