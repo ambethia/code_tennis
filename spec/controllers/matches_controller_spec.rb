@@ -173,11 +173,21 @@ describe MatchesController do
   describe "responding to POST push" do
 
     it "should push the requested match" do
-      Match.should_receive(:find).with("37").and_return(mock_match)
+      Match.should_receive(:find).with("37").and_return(mock_match(:active? => true))
       mock_match.should_receive(:push).with("JSON")
       post :push, :id => "37", :payload => "JSON"
     end
   end
   
 
+  describe "responding to GET complete_volley" do
+    
+    it "should find the match" do
+      Match.should_receive(:find).with("37").and_return(mock_match(:active? => true, :admin => mock_model(User)))
+      get :complete_volley, :id => "37"
+    end
+    
+    
+    
+  end
 end
