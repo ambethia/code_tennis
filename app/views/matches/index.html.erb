@@ -3,27 +3,22 @@
 <h1>Matches</h1>
 
 <% for match in @matches %>
-
-  <table>
+<table>
+  <tr>
+    <td rowspan="4" class="avatar">
+      <%= display_user_avatar(match.admin, :medium) %>
+    </td>
+    <td colspan="2">
+      <span class="match-name"><%= link_to h(match.name), match %></span><br />
+      <span class="match-description"><%= match.description %></span>
+    </td>
     <tr>
-      <td rowspan="4" class="avatar">
-        <%= display_user_avatar(match.admin, :medium) %>
+       <td class="players" colspan="2">
+         <strong>Players:</strong> <%= match.players.map{|p| link_to(h(p.name), p.user) }.to_sentence %>
       </td>
-      <td colspan="2">
-        <span class="match-name"><%= link_to h(match.name), match %></span><br />
-        <span class="match-description"><%= match.description %></span>
-      </td>
-      <tr>
-         <td class="players" colspan="2">
-           <strong>Players:</strong> <%= match.players.map{|p| link_to(h(p.name), p.user) }.to_sentence %>
-        </td>
-      </tr>
-    </table>
-        
-        
-              
+    </tr>
+  </table>
 <% end %>
-
 
 <br />
 
