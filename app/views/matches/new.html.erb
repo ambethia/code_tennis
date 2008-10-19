@@ -1,4 +1,4 @@
-<h1>New Match</h1>
+<div id="form"><h1>New Match</h1>
 
 <% form_for(@match) do |f| %>
   <%= f.error_messages %>
@@ -25,4 +25,3 @@
 
    <span><%= f.submit "Create" %> <%= link_to "Cancel", matches_path %></span>
 <% end %>
-

@@ -1,4 +1,4 @@
-<h1>User Details</h1>
+<div id="form"><h1>User Details</h1>
 
 <% form_for(:user, @user, current_user_path, :html => {:method => :put, :id => "edit_user"}) do |f| %>
   <%= f.error_messages %>
@@ -43,4 +43,4 @@
 
   <span><%= f.submit "Update" %> <%= link_to "Cancel", @user %></span>
 
-<% end %>
+<% end %></div>
