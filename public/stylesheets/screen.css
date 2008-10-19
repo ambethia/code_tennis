@@ -2,6 +2,7 @@ body {
   font-size: 75%;
   background-color: #3a3a3c;
   color: #ccc;
+  line-height: 1.5em;
 }
 
 html>body {
@@ -32,6 +33,10 @@ a {
 
 li {
   list-style: none
+}
+
+a img {
+  border: none;
 }
 
 body, table, textarea {
@@ -72,18 +77,18 @@ body, table, textarea {
 }
 
 #navigation li a:link, #navigation li a:visited {
-  color: #333;
+  color: #666;
 }
 
 #navigation li a:focus, #navigation li a:hover {
   background-color: transparent;
-  color: #666;
+  color: #333;
 }
 
 #navigation.matches #matches_navigation,
 #navigation.users #users_navigation,
 #navigation li.current {
-  background-color: #fff !important;
+  background-color: #eee !important;
 }
 
 
@@ -97,7 +102,7 @@ body, table, textarea {
 
 #content {
   position: relative;
-  background-color: #fff;
+  background-color: #eee;
   color: #333;
   padding: 10px;
   font-size: 1em;
@@ -127,28 +132,96 @@ body, table, textarea {
   background-color: #333
 }
 
-img.center {
+#content img.center {
   display: block;
   margin: 0 auto;
   }
   
-/* Splash ----------------------------------------------------------------- */
-#content.splash {background-color: #3a3a3c;}
-#content.splash #new-session {}
+#new-session {
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
+}
 
+#new-session h2 {
+  font-size: 2.5em;
+  margin: .5em 0;
+}
+
+#new-session h3 {
+  color: #666;
+  font-size: 1.5em;
+  margin: 1em 0 0;
+  padding: 0;
+}
+
+#new-session p {
+  font-size: 1em;
+  margin: 1em 0 1em;
+  padding: 0;
+}
+
+#new-session form {
+  border-bottom: 10px solid #d5d5d5;
+  margin: 0;
+  padding: 20px 0;
+  }
+  
+#new-session label {
+  font-size: 16px;
+  vertical-align: baseline;
+}
+
+#openid_url {
+  font-size: 16px;
+  vertical-align: baseline;
+}
+
+#new-session input[type=text] {
+  margin-right: 5px;
+  vertical-align: baseline;
+}
+
+#new-session input[type=submit] {
+  margin-left: 2px;
+  vertical-align: baseline;
+}
+
+
+  
+/* Splash ----------------------------------------------------------------- */
+
+#content.splash {
+  color: #ccc;
+  text-align: center;
+  background-color: #3a3a3c;
+  }
+  
+#foot.splash p#copyright,#foot.splash p#copyright a,#foot.splash p#copyright strong {
+  color: #686868;
+}
+
+#foot.splash p#copyright,#foot.splash {
+  width: 990px;
+  position: absolute;
+  bottom: 10px;
+  text-align: right;
+}
+
+/* Header ----------------------------------------------------------------- */
 
 #masthead {
   background-color: #3a3a3c;
-  height: 254px;
+  height: 274px;
   position: relative;
 }
 
 #masthead h1 {
   color: #ddd;
-  height: 254px;
+  height: 274px;
   margin: 0;
-  padding: 5px 10px;
-  background: #3a3a3c url(../images/head.png) no-repeat scroll top center;
+  padding: 5px 20px;
+  background: #3a3a3c url(../images/head.png) no-repeat scroll 128px top;
   text-indent: -900000000px;
 }
 

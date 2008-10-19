@@ -9,7 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081019063742) do
+ActiveRecord::Schema.define(:version => 20081019152621) do
+
+  create_table "avatars", :force => true do |t|
+    t.string   "name"
+    t.string   "filename"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "commits", :force => true do |t|
     t.integer  "volley_id"
@@ -53,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20081019063742) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "color"
   end
 
   create_table "users", :force => true do |t|
@@ -66,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20081019063742) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "twitter_name"
+    t.integer  "avatar_id"
   end
 
   create_table "volleys", :force => true do |t|

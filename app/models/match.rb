@@ -1,6 +1,9 @@
 class Match < ActiveRecord::Base
   MAX_PLAYERS = 2
   named_scope :with_openings, :conditions => ["matches.players_count < ?", MAX_PLAYERS]
+  named_scope :incomplete,    :conditions => {"matches.completed_at" => nil}
+  named_scope :complete,      :conditions =>  "matches.completed_at IS NOT NULL"
+  
 
   belongs_to :admin, :class_name => "User"
   has_many :players

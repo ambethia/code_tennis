@@ -1,0 +1,30 @@
+<table class="volley">
+  <tr>
+    <td colspan="2">
+      Volleyed to <%=h volley.player.name %> at
+      <%= volley.created_at.strftime("%B #{volley.created_at.day.ordinalize}, %Y %I:%M %p") %>
+    </td>
+  </tr>
+  <%- if !volley.commits.blank? -%>
+  <%- for commit in volley.commits -%>
+  <tr>
+    <td colspan="2"><%= link_to h(commit.guid), h(commit.url) %></td>
+  </tr>
+  <tr>
+    <td>
+      <%= h(commit.message) %>
+    </td>
+    <td>
+      Avatar here
+      <%= h(commit.player.name) %>
+      <%= commit.created_at.strftime("%B #{commit.created_at.day.ordinalize}, %Y %I:%M %p") %>
+    </td>
+  </tr>
+  <%- end -%>
+  <%- else -%>
+  <tr>
+    <td><%=h volley.player.name(:short => true) %> hasn't made any commits yet.</td>
+  </tr>
+  <%- end -%>
+  
+</table>

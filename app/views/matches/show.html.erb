@@ -13,6 +13,10 @@
 </p>
 
 <p>
+  <b>Github Post-Receive URL:</b> <%= push_match_url(@match) %>
+</p>
+
+<p>
   <b>Description:</b>
   <%=h @match.description %>
 </p>
@@ -29,62 +33,21 @@
 your available matches.</p>
 <%- end -%>
 
-<h3>Current Volley</h3>
+<h3>Volleys</h3>
 <%- if @match.volleys.incomplete.any? -%>
-<ul>
-<%- for volley in @match.volleys.incomplete -%>
-  <li>
-    <%- if !volley.commits.blank? -%>
-    <%= link_to h(volley.player.user.fullname), volley.player.user %>
-    <ul>
-      <%- for commit in volley.commits -%>
-      <li>
-        <%= link_to h(commit.guid), h(commit.url) %>
-        <%= link_to h(commit.player.user.fullname), commit.player.user.github_url %>
-        <%= link_to h(commit.message), h(commit.url) %>
-      </li>
-      <%- end -%>
-    </ul>
-    <%- else -%>
-    <%= link_to h(volley.player.user.fullname), volley.player.user %> hasn't made any commits yet.
-    <%- end -%>
-  </li>
-<%- end -%>
-</ul>
+<%= render :partial => "volley", :collection => @match.volleys.incomplete %>
 <%- if current_user == @match.admin -%>
 	<%= link_to "End current volley", volley_match_path(@match), :method => :put  %>
 <%- end -%>
 <%- end -%>
 
-<h3>Complete Volleys</h3>
 <%- if @match.volleys.complete.any? -%>
-  <ul>
-  <%- for volley in @match.volleys.complete -%>
-    <li>
-      <%- if !volley.commits.blank? -%>
-      <%= link_to h(volley.player.user.fullname), volley.player.user %>
-      <ul>
-        <%- for commit in volley.commits -%>
-        <li>
-          <%= link_to h(commit.guid), h(commit.url) %>
-          <%= link_to h(commit.player.user.fullname), commit.player.user.github_url %>
-          <%= link_to h(commit.message), h(commit.url) %>
-        </li>
-        <%- end -%>
-      </ul>
-      <%- else -%>
-      <%= link_to h(volley.player.user.fullname), volley.player.user %> hasn't made any commits yet.
-      <%- end -%>
-    </li>
-  <%- end -%>
-  </ul>
-
+<h4>Completed Volleys</h4>
+<%= render :partial => "volley", :collection => @match.volleys.complete %>
 <div id="volley-timeline" class="timeline" style="height: 400px; border: 1px solid #aaa"></div>
-
 <%- else -%>
 <p>No volleys have been completed.</p>
 <%- end -%>
-
 
 <p>
   <%= link_to "Back", matches_path %>
