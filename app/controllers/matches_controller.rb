@@ -1,5 +1,5 @@
 class MatchesController < ApplicationController
-  skip_before_filter :verify_authenticity_token, :only => :push
+  skip_before_filter :verify_authenticity_token, :only => [:push, :volleys]
 
   before_filter :find_match,        :only => [:edit, :update, :destroy, :complete, :volley, :push, :show, :volleys]
   before_filter :require_ownership, :only => [:edit, :update, :destroy, :complete, :volley]
@@ -104,7 +104,7 @@ class MatchesController < ApplicationController
   # GET /matches/1/volleys.xml
   def volleys
     respond_to do |format|
-      format.xml  { render :action => 'volleys.html.erb', :xml => @match }
+      format.xml  {  render :action => 'volleys.rxml',  :xml => @match }
     end
   end
 
