@@ -5,6 +5,7 @@ ambethia:
   url: http://ambethia.com
   identity_url: http://ambethia.com/
   github_user: ambethia
+  twitter_name: ambethia
   time_zone: Eastern Time (US & Canada)
 
 dedguy:
@@ -14,6 +15,7 @@ dedguy:
   url: http://dedguy.net
   identity_url: http://dedguy.myopenid.com/
   github_user: dedguy
+  twitter_name: dedguy
   time_zone: Eastern Time (US & Canada)
   
 madcowley:
@@ -23,4 +25,5 @@ madcowley:
   url: http://madcowley.com
   identity_url: http://madcowley.pip.verisignlabs.com/
   github_user: madcowley
+  twitter_name: madcowley
   time_zone: Eastern Time (US & Canada)

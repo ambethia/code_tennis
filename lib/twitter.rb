@@ -41,7 +41,7 @@ class Twitter
           # Twitter is currently unavailable
           RAILS_DEFAULT_LOGGER.info("twitter failure 4")
       end
-    end
+    end # end if ENV['RAILS_ENV'] == 'production'
     success
   end
   

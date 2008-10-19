@@ -89,11 +89,13 @@ class MatchesController < ApplicationController
     head :ok
   end
   
+  # PUT /matches/1/volley
   def volley
     @match.volley!
     redirect_to match_path(@match)
   end
   
+  # PUT /matches/1/volley
   def complete
     @match.complete!
     redirect_to match_path(@match)
