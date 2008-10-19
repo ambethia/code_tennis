@@ -79,7 +79,7 @@ your available matches.</p>
   <%- end -%>
   </ul>
 
-<div id="volley-timeline" class="timeline" style="height: 150px; border: 1px solid #aaa"></div>
+<div id="volley-timeline" class="timeline" style="height: 400px; border: 1px solid #aaa"></div>
 
 <%- else -%>
 <p>No volleys have been completed.</p>
@@ -110,13 +110,15 @@ function onLoad() {
 	  var bandInfos = [
 	    Timeline.createBandInfo({
 		  	eventSource:    eventSource,
-			width:          "60%", 
+			width:          "40%", 
+			height:         "400px",
 	        intervalUnit:   Timeline.DateTime.DAY, 
 	        intervalPixels: 100
 	    }),
 	    Timeline.createBandInfo({
 		  	eventSource:    eventSource,
-			width:          "40%", 
+			width:          "60%",
+			height:         "200px", 
 	        intervalUnit:   Timeline.DateTime.MONTH, 
 	        intervalPixels: 200
 	    })
