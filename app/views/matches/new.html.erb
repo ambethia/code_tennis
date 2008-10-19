@@ -19,6 +19,10 @@
     <%= f.text_field :github_project %>
   </p>
   <p>
+    <%= f.check_box :admin_is_player %>
+    <%= f.label :admin_is_player, "Include yourself as a player?" %>
+  </p>
+  <p>
     <%= f.submit "Create" %>
   </p>
 <% end %>

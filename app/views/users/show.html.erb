@@ -1,24 +1,37 @@
-<h1><%=h @user.display_name %></h1>
+<h2><%=h @user.display_name %></h2>
 
 <div id="matches">
 
 <h3>Matches</h3>
 
-<% if @user.matches.any? %>
+<%- if @user.matches.any? -%>
 <ul>
-<% @user.matches.each do |match| %>
+<%- @user.matches.each do |match| -%>
   <li><%= link_to h(match.name), match_path(match) %></li>
-<% end %>
+<%- end -%>
 </ul>
-<% else %>
+<%- else -%>
 <p><%= h(@user.display_name) %> is not currently playing.</p>
+<%- end -%>
+
+<%- if current_user.administrations.with_openings.any? -%>
+<% form_tag(players_matches_path) do %>
+  <%= hidden_field_tag :user_id, @user.id %>
+  <p>
+    Add this user to one of your Matches?
+    <%= select_tag :match_id, options_from_collection_for_select(current_user.administrations.with_openings, :id, :name) %>
+    <%= submit_tag "Add" %>
+  </p>
 <% end %>
+<%- else -%>
+<p>To play with this user, create a <%= link_to "new match", new_match_path %>.</p>
+<%- end -%>
 
 </div>
 
 <div id="user_details">
 <p>
-  <%=h @user.fullname %>
+  Nickname: <%=h @user.nickname %>
 </p>
 <p>
   <b>Email:</b>

@@ -1,13 +1,28 @@
 class Match < ActiveRecord::Base
+  MAX_PLAYERS = 2
+  named_scope :with_openings, :conditions => ["matches.players_count < ?", MAX_PLAYERS]
+
   belongs_to :admin, :class_name => "User"
   has_many :players
   has_many :users, :through => :players
   has_many :volleys
 
-  validates_presence_of :admin_id
-  validates_presence_of :name
-  validates_presence_of :github_user
-  validates_presence_of :github_project
+  validates_presence_of   :admin_id
+  validates_presence_of   :name
+  validates_uniqueness_of :name
+  validates_presence_of   :github_user
+  validates_presence_of   :github_project
+
+  attr_accessor :admin_is_player
+
+  # Add the admin to the match by default
+  def after_initialize
+    self.admin_is_player ||= true
+  end
+  
+  def after_create
+    users << admin if admin_is_player && (admin_is_player != "0") # 0/1 checkbox, ug.
+  end
 
   def github_url
     "http://github.com/#{github_user}/#{github_project}"

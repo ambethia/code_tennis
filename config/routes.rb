@@ -4,6 +4,8 @@ ActionController::Routing::Routes.draw do |map|
     "volley"   => :put,
     "complete" => :put,
     "volleys"  => :get
+  }, :collection => {
+    "players"  => :post,
   }
 
   map.resource :session

@@ -30,7 +30,6 @@ describe MatchesController do
       end
     
     end
-
   end
 
   describe "responding to GET show" do
@@ -40,7 +39,7 @@ describe MatchesController do
       get :show, :id => "37"
       assigns[:match].should equal(mock_match)
     end
-    
+
     describe "with mime type of xml" do
 
       it "should render the requested match as xml" do
@@ -52,11 +51,11 @@ describe MatchesController do
       end
 
     end
-    
+
   end
 
   describe "responding to GET new" do
-  
+
     it "should expose a new match as @match" do
       Match.should_receive(:new).and_return(mock_match)
       get :new
@@ -66,7 +65,7 @@ describe MatchesController do
   end
 
   describe "responding to GET edit" do
-  
+
     it "should expose the requested match as @match" do
       Match.should_receive(:find).with("37").and_return(mock_match)
       get :edit, :id => "37"
@@ -78,7 +77,7 @@ describe MatchesController do
   describe "responding to POST create" do
 
     describe "with valid params" do
-      
+
       it "should expose a newly created match as @match" do
         Match.should_receive(:new).with({'these' => 'params'}).and_return(mock_match(:save => true))
         post :create, :match => {:these => 'params'}
@@ -90,9 +89,9 @@ describe MatchesController do
         post :create, :match => {}
         response.should redirect_to(match_url(mock_match))
       end
-      
+
     end
-    
+
     describe "with invalid params" do
 
       it "should expose a newly created but unsaved match as @match" do
@@ -104,7 +103,7 @@ describe MatchesController do
       it "should re-render the 'new' template" do
         Match.stub!(:new).and_return(mock_match(:save => false))
         post :create, :match => {}
-        response.should render_template('new')
+        response.should render_template("new")
       end
       
     end
@@ -117,8 +116,8 @@ describe MatchesController do
 
       it "should update the requested match" do
         Match.should_receive(:find).with("37").and_return(mock_match)
-        mock_match.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => "37", :match => {:these => 'params'}
+        mock_match.should_receive(:update_attributes).with({"these" => "params"})
+        put :update, :id => "37", :match => {:these => "params"}
       end
 
       it "should expose the requested match as @match" do
@@ -134,13 +133,13 @@ describe MatchesController do
       end
 
     end
-    
+
     describe "with invalid params" do
 
       it "should update the requested match" do
         Match.should_receive(:find).with("37").and_return(mock_match)
-        mock_match.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => "37", :match => {:these => 'params'}
+        mock_match.should_receive(:update_attributes).with({"these" => "params"})
+        put :update, :id => "37", :match => {:these => "params"}
       end
 
       it "should expose the match as @match" do
@@ -166,7 +165,7 @@ describe MatchesController do
       mock_match.should_receive(:destroy)
       delete :destroy, :id => "37"
     end
-  
+
     it "should redirect to the matches list" do
       Match.stub!(:find).and_return(mock_match(:destroy => true))
       delete :destroy, :id => "1"
@@ -174,7 +173,7 @@ describe MatchesController do
     end
 
   end
-  
+
   describe "responding to POST push" do
 
     it "should push the requested match" do
@@ -183,7 +182,7 @@ describe MatchesController do
       post :push, :id => "37", :payload => "JSON"
     end
   end
-  
+
   describe "as an unauthorized user" do
 
     before(:each) do
@@ -197,14 +196,11 @@ describe MatchesController do
 
   end
 
-  describe "responding to GET complete_volley" do
-    
+  describe "responding to PUT volley" do
+
     it "should find the match" do
       Match.should_receive(:find).with("37").and_return(mock_match(:active? => true, :admin => mock_model(User)))
       get :complete_volley, :id => "37"
     end
-    
-    
-    
   end
 end

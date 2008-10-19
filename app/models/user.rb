@@ -18,7 +18,6 @@ class User < ActiveRecord::Base
   end
   
   def display_name
-    self.nickname? ? self.nickname : self.fullname
-    
+    self.fullname.blank? ? self.fullname : self.nickname
   end
 end

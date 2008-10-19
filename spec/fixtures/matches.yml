@@ -4,6 +4,7 @@ binary_frisbee:
   description: The ill-fated first attempt.
   github_user: ambethia
   github_project: binary-frisbee
+  players_count: 2
 
 puppy_hospital:
   admin: dedguy
@@ -11,3 +12,4 @@ puppy_hospital:
   description: The average salary for puppy hospital jobs is $43,000.
   github_user: dedguy
   github_project: puppy-hospital
+  players_count: 1
