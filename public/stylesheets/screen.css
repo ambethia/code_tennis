@@ -1,6 +1,6 @@
 body {
   font-size: 75%;
-  background-color: #111;
+  background-color: #3a3a3c;
   color: #ccc;
 }
 
@@ -41,7 +41,7 @@ body, table, textarea {
 
 #application {
   padding: 0 1.5em;
-  width: 770px;
+  width: 990px;
   margin: 1.5em auto;
 }
 
@@ -127,33 +127,32 @@ body, table, textarea {
   background-color: #333
 }
 
-/* Header ----------------------------------------------------------------- */
+img.center {
+  display: block;
+  margin: 0 auto;
+  }
+  
+/* Splash ----------------------------------------------------------------- */
+#content.splash {background-color: #3a3a3c;}
+#content.splash #new-session {}
+
 
 #masthead {
-  background-color: #222;
-  height: 80px;
+  background-color: #3a3a3c;
+  height: 254px;
   position: relative;
 }
 
 #masthead h1 {
   color: #ddd;
+  height: 254px;
   margin: 0;
   padding: 5px 10px;
-  font-size:2em;
-  line-height: 100%;
-  font-variant:small-caps;
-  font-weight:bold;
-  letter-spacing:1px;
-  text-transform:lowercase;
+  background: #3a3a3c url(../images/head.png) no-repeat scroll top center;
+  text-indent: -900000000px;
 }
 
-#masthead h1 span.alt {
-  color: #aaa;
-  font-family:"Warnock Pro","Goudy Old Style","Palatino","Book Antiqua",Georgia,serif;
-  font-style:italic;
-  font-weight:normal;
-  font-variant: normal;
-}
+
 
 /* Footer ----------------------------------------------------------------- */
 
@@ -199,12 +198,12 @@ body, table, textarea {
 
 #session li a:link, #session li a:visited {
   color: #333;
-  background-color: #666;
+  background-color: #ccc;
 }
 
 #session li a:focus, #session li a:hover, #session li a:active {
   color: #666;
-  background-color: #ccc;
+  background-color: #fff;
 }
 
 /* Flash Messages --------------------------------------------------------- */
