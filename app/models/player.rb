@@ -8,6 +8,7 @@ class Player < ActiveRecord::Base
 
   delegate :twitter_name, :to => :user
   delegate :display_name, :to => :user 
+  delegate :nickname,     :to => :user
   delegate :avatar,       :to => :user
   
   def name(options = {})

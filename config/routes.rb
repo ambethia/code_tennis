@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :avatars
+
   map.resources :matches, :member => {
     "push"     => :post,
     "volley"   => :put,
