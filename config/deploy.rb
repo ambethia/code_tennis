@@ -5,6 +5,7 @@ set :deploy_to, "/var/apps/#{application}"
 set :scm, :git
 set :repository,  "git@github.com:railsrumble/tampa-rb.git"
 set :git_enable_submodules, true
+set :branch, "railsrumble"
 set :deploy_via, :remote_cache
 
 role :app, "66.246.75.37"
