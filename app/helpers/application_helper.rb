@@ -8,7 +8,7 @@ module ApplicationHelper
   end
 
   def display_user_avatar(user)
-    user.avatar.nil? ? '' : image_tag(user.avatar.filename,:alt => user.display_name, :class => 'avatar')
+    user.avatar.nil? ? '' : image_tag(user.avatar.filename,:alt => user.display_name, :class => 'avatar', :size => '175x175')
   end
 
 end
