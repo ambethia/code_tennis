@@ -1,8 +1,9 @@
+<div id="help">
 <h1>Code Tennis Help</h1>
 
 <h2>Tools of the game</h2>
 
-<ul>
+<ul class="tools">
 	<li>twitter <%= image_tag("twitter.png", :alt => '', :size => "50x50") %></li>
 	<li>github  <%= image_tag("github.png",  :alt => '', :size => "50x50") %></li>
 	<li>openid  <%= image_tag("openid-logo-square.png", :alt => '', :size => "50x50") %></li>
@@ -22,7 +23,7 @@
 <p>CodeTennis sends notifications via twitter.  If you don't have a Twitter account, 
 	sign up over at <%= link_to 'twitter.com', "http://twitter.com" %>.</p> 
 
-<p>You'll also want to follow the twitter user code_tennis.</p>
+<p>You'll also want to follow the twitter user <%= link_to "code_tennis", "http://twitter.com/code_tennis"  %>.</p>
 
 
 <h2>Application Setup</h2>
@@ -52,4 +53,20 @@
 <p>To add another player, click on Users and then on the player you want. On that player's page, select the new match from the list and click 'Add'.</p>
 <%= image_tag("add_player_to_match.jpg", :alt => "Adding a player to a match.") %>
 
+<h2>Playing the Game</h2>
+<h3>Matches</h3>
+<p>A match is any shared programming project you keep track of with CodeTennis. Matches include two players, and a github project.</p>
 
+<h3>Volleys</h3>
+<p>A volley is one CodeTennis turn.  The first player starts a coding task, and does any number of commits to complete the task.  When the task is complete, the player signals the end of his volley and the next player starts.
+<p> To mark a volley as closed, include [volley] in your git commit message, and push the changes to github.</p>
+<p>When CodeTennis sees that a volley has ended, it will notify the next player that his turn is up.</p>
+<p>Keep in mind that CodeTennis volleys can be distinct tasks, like a Lighthouse ticket, 
+	or just any chunk of code that makes sense for one person to do.</p>
+<p>When the project is complete, the match admin player can mark the match as closed.  Then, time for another match!</p>
+<h2>Watching the Game</h2>
+<p>You can follow the progress of a match by <%= link_to 'selecting the match', matches_path %> and checking out the commit history and timeline.  Also, the 
+<%= link_to 'code tennis twitter user', "http://twitter.com/code_tennis" %>
+will have a running list of volley notifications.</p>
+
+</div>
