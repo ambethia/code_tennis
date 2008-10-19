@@ -14,7 +14,19 @@ class Match < ActiveRecord::Base
   end
 
   def active_volley
-    volleys.find(:first, :conditions => {"completed_at" => nil})
+    volleys.incomplete.first
+  end
+  
+  def current_player
+    self.active_volley.player
+  end
+
+  def next_player
+    if current_player.nil?
+      next_player = players.find(:first)
+    else
+      next_player = players.find(:first, :conditions => "id != #{current_player.id}")
+    end
   end
 
   def push(payload)
@@ -31,15 +43,18 @@ class Match < ActiveRecord::Base
     end
   end
 
-  def new_volley
-    current_player = self.active_volley.player
-    if current_player.nil?
-      next_player = players.find(:first)
-    else
-      next_player    = players.find(:first, :conditions => "id != #{current_player.id}")
-    end
-    self.active_volley.update_attributes(:completed_at => Time.now)
-    self.build_volley(:player_id => next_player.id)
+  def complete?
+    !!(self.completed_at)
+  end
+
+  def complete!
+    self.update_attribute :completed_at, Time.now
+  end
+
+  def volley!
+    player = self.next_player
+    self.active_volley.update_attribute :completed_at, Time.now
+    self.volleys.create(:player => player) unless complete?
   end
 
   def notify_players

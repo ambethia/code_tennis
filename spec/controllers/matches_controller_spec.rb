@@ -2,14 +2,19 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe MatchesController do
 
+  before(:each) do
+    @user = stub_model(User)
+    controller.stub!(:current_user).and_return(@user)
+  end
+
   def mock_match(stubs={})
-    @mock_match ||= mock_model(Match, {:"admin=" => stub_model(User)}.merge(stubs))
+    @mock_match ||= mock_model(Match, {:"admin=" => @user, :"admin" => @user}.merge(stubs))
   end
   
   describe "responding to GET index" do
 
     it "should expose all matches as @matches" do
-      Match.should_receive(:find).with(:all, {:offset=>0, :limit=>20}).and_return([mock_match])
+      Match.should_receive(:paginate).with(:page => nil, :per_page => 20).and_return([mock_match])
       get :index
       assigns[:matches].should == [mock_match]
     end
@@ -18,7 +23,7 @@ describe MatchesController do
   
       it "should render all matches as xml" do
         request.env["HTTP_ACCEPT"] = "application/xml"
-        Match.should_receive(:find).with(:all, {:offset=>0, :limit=>20}).and_return(matches = mock("Array of Matches"))
+        Match.should_receive(:paginate).with(:page => nil, :per_page => 20).and_return(matches = mock("Array of Matches"))
         matches.should_receive(:to_xml).and_return("generated XML")
         get :index
         response.body.should == "generated XML"
@@ -179,6 +184,18 @@ describe MatchesController do
     end
   end
   
+  describe "as an unauthorized user" do
+
+    before(:each) do
+      Match.stub!(:find).and_return(mock_match(:admin => stub_model(User)))
+    end
+
+    it "should redirect to matches index" do
+      get :edit, :id => "1"
+      response.should redirect_to(matches_url)
+    end
+
+  end
 
   describe "responding to GET complete_volley" do
     

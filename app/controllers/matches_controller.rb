@@ -1,7 +1,9 @@
 class MatchesController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :push
-
   
+  before_filter :find_match,         :only => [:edit, :update, :destroy, :complete, :volley, :push, :show, :volleys]
+  before_filter :requires_ownership, :only => [:edit, :update, :destroy, :complete, :volley]
+
   # GET /matches
   # GET /matches.xml
   def index
@@ -16,8 +18,6 @@ class MatchesController < ApplicationController
   # GET /matches/1
   # GET /matches/1.xml
   def show
-    @match = Match.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @match }
@@ -37,7 +37,6 @@ class MatchesController < ApplicationController
 
   # GET /matches/1/edit
   def edit
-    @match = Match.find(params[:id])
   end
 
   # POST /matches
@@ -48,7 +47,7 @@ class MatchesController < ApplicationController
 
     respond_to do |format|
       if @match.save
-        flash[:notice] = 'Match was successfully created.'
+        flash[:notice] = "Match was successfully created."
         format.html { redirect_to(@match) }
         format.xml  { render :xml => @match, :status => :created, :location => @match }
       else
@@ -61,11 +60,9 @@ class MatchesController < ApplicationController
   # PUT /matches/1
   # PUT /matches/1.xml
   def update
-    @match = Match.find(params[:id])
-
     respond_to do |format|
       if @match.update_attributes(params[:match])
-        flash[:notice] = 'Match was successfully updated.'
+        flash[:notice] = "Match was successfully updated."
         format.html { redirect_to(@match) }
         format.xml  { head :ok }
       else
@@ -78,7 +75,6 @@ class MatchesController < ApplicationController
   # DELETE /matches/1
   # DELETE /matches/1.xml
   def destroy
-    @match = Match.find(params[:id])
     @match.destroy
 
     respond_to do |format|
@@ -89,51 +85,38 @@ class MatchesController < ApplicationController
   
   # POST /matches/1
   def push
-    @match = Match.find(params[:id])
-    if @match.active?
-      @match.push(params[:payload])
-
-      head :ok
-    else
-      head :ok
-    end
+    @match.push(params[:payload])
+    head :ok
   end
   
-  def complete_volley
-    @match = Match.find(params[:id])
-    if @match.active?
-      if current_user == @match.admin
-        @match.new_volley
-        flash[:notice] = 'Volley completed.'
-      else
-        flash[:error] = "Please ask the admin to do this for you."
-      end
-    else
-      flash[:error]  = 'This match is closed.'
-    end
+  def volley
+    @match.volley!
     redirect_to match_path(@match)
   end
   
-  def complete_match
-    @match = Match.find(params[:id])
-    if current_user == @match.admin
-      if @match.active? && 
-        @match.update_attributes(:active => false)
-        flash[:notice] = 'Match closed.'
-      end
-    else
-      flash[:error] = 'Please ask the admin to do this for you.'
-    end
+  def complete
+    @match.complete!
     redirect_to match_path(@match)
   end
-  
   
   def volleys
-    @match   = Match.find(params[:id])
     respond_to do |format|
       format.xml  { render :action => 'volleys.html.erb', :xml => @match }
     end
     
   end
   
+
+  private
+
+    def find_match
+      @match = Match.find(params[:id])
+    end
+
+    def requires_ownership
+      unless @match.admin == current_user
+        flash[:warning] = "You aren't the owner of this match."
+        redirect_to matches_path
+      end
+    end
 end

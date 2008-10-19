@@ -1,8 +1,8 @@
 <h2><%=h @match.name %></h2>
-<% if !@match.active %>
-	<h3>This match is over.</h3>
+<% if @match.complete? %>
+  <h3>This match is over.</h3>
 <% elsif current_user == @match.admin %>
-	<%= link_to 'Close this match', complete_match_match_path(@match) %>
+  <%= link_to "Close this match", complete_match_path(@match), :method => :put %>
 <% end %>
 <p>
   <b>Admin:</b> <%= link_to h(@match.admin.fullname), @match.admin %>
@@ -18,48 +18,70 @@
 </p>
 
 <h3>Players:</h3>
-<% if !@match.players.blank? %>
+<%- if @match.players.any? -%>
 <ul>
-  <% for user in @match.players.map(&:user) %>
+  <%- for user in @match.players.map(&:user) -%>
   <li><%= link_to(h(user.fullname), user) %></li>
-  <% end %>  
+  <%- end -%>
 </ul>
-<% else %>
+<%- else -%>
 <p>No players yet for this match.</p>
-<% end %>
+<%- end -%>
 
-<h3>Volleys</h3>
-<% if current_user == @match.admin %>
-	<%= link_to 'End current volley', complete_volley_match_path(@match)  %>
-<% end %>
+<h3>Current Volley</h3>
+<%- if @match.volleys.incomplete.any? -%>
+<ul>
+<%- for volley in @match.volleys.incomplete -%>
+  <li>
+    <%- if !volley.commits.blank? -%>
+    <%= link_to h(volley.player.user.fullname), volley.player.user %>
+    <ul>
+      <%- for commit in volley.commits -%>
+      <li>
+        <%= link_to h(commit.guid), h(commit.url) %>
+        <%= link_to h(commit.player.user.fullname), commit.player.user.github_url %>
+        <%= link_to h(commit.message), h(commit.url) %>
+      </li>
+      <%- end -%>
+    </ul>
+    <%- else -%>
+    <%= link_to h(volley.player.user.fullname), volley.player.user %> hasn't made any commits yet.
+    <%- end -%>
+  </li>
+<%- end -%>
+</ul>
+<%- if current_user == @match.admin -%>
+	<%= link_to "End current volley", volley_match_path(@match), :method => :put  %>
+<%- end -%>
+<%- end -%>
 
-
-<%- if !@match.volleys.blank? -%>
+<h3>Complete Volleys</h3>
+<%- if @match.volleys.complete.any? -%>
   <ul>
-  <% for volley in @match.volleys %>
+  <%- for volley in @match.volleys.complete -%>
     <li>
       <%- if !volley.commits.blank? -%>
       <%= link_to h(volley.player.user.fullname), volley.player.user %>
       <ul>
-        <% for commit in volley.commits %>
+        <%- for commit in volley.commits -%>
         <li>
           <%= link_to h(commit.guid), h(commit.url) %>
           <%= link_to h(commit.player.user.fullname), commit.player.user.github_url %>
           <%= link_to h(commit.message), h(commit.url) %>
         </li>
-        <% end %>
+        <%- end -%>
       </ul>
       <%- else -%>
       <%= link_to h(volley.player.user.fullname), volley.player.user %> hasn't made any commits yet.
       <%- end -%>
     </li>
-  <% end %>
+  <%- end -%>
   </ul>
 
 <div id="volley-timeline" class="timeline" style="height: 150px; border: 1px solid #aaa"></div>
 
 <%- else -%>
-<p>No volleys have been served.</p>
+<p>No volleys have been completed.</p>
 <%- end -%>
 
 
