@@ -61,7 +61,9 @@
     <p>This player hasn't played in any past matches.</p>
     <%- end -%>
     
-    <p><%= current_user_path %></p>
+    <%- if @user == current_user -%>
+    <p><%= link_to "Edit your profile.", current_user_path %></p>
+    <%- end -%>
   </div>
   
 </div>
