@@ -14,7 +14,7 @@
 <p><%= h(@user.display_name) %> is not currently playing.</p>
 <%- end -%>
 
-<%- if current_user.administrations.with_openings.any? -%>
+<%- if logged_in? && current_user.administrations.with_openings.any? -%>
 <% form_tag(players_matches_path) do %>
   <%= hidden_field_tag :user_id, @user.id %>
   <p>
