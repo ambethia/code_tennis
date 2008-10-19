@@ -1,8 +1,8 @@
 class MatchesController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :push
   
-  before_filter :find_match,         :only => [:edit, :update, :destroy, :push, :show]
-  before_filter :requires_ownership, :only => [:edit, :update, :destroy]
+  before_filter :find_match,         :only => [:edit, :update, :destroy, :complete, :volley, :push, :show]
+  before_filter :requires_ownership, :only => [:edit, :update, :destroy, :complete, :volley]
 
   # GET /matches
   # GET /matches.xml
@@ -89,31 +89,13 @@ class MatchesController < ApplicationController
     head :ok
   end
   
-  def complete_volley
-    @match = Match.find(params[:id])
-    if @match.active?
-      if current_user == @match.admin
-        @match.new_volley
-        flash[:notice] = 'Volley completed.'
-      else
-        flash[:error] = "Please ask the admin to do this for you."
-      end
-    else
-      flash[:error]  = 'This match is closed.'
-    end
+  def volley
+    @match.volley!
     redirect_to match_path(@match)
   end
   
-  def complete_match
-    @match = Match.find(params[:id])
-    if current_user == @match.admin
-      if @match.active? && 
-        @match.update_attributes(:active => false)
-        flash[:notice] = 'Match closed.'
-      end
-    else
-      flash[:error] = 'Please ask the admin to do this for you.'
-    end
+  def complete
+    @match.complete!
     redirect_to match_path(@match)
   end
 

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081018225240) do
+ActiveRecord::Schema.define(:version => 20081019035443) do
 
   create_table "commits", :force => true do |t|
     t.integer  "volley_id"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(:version => 20081018225240) do
     t.string   "github_project"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "active",         :default => true
+    t.datetime "completed_at"
   end
 
   create_table "open_id_authentication_associations", :force => true do |t|
