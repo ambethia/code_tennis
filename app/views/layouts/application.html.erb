@@ -5,33 +5,49 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <title>Code Tennis</title>
-	<%= javascript_include_tag 'http://simile.mit.edu/timeline/api/timeline-api.js' %>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag 'http://simile.mit.edu/timeline/api/timeline-api.js' %>
 </head>
 <body onload="onLoad();" onresize="onResize();">
 
-<h1>Code Tennis</h1>
+<div id="application">
 
-<div id="nav">
-  <ul>
-    <li><%= link_to "Matches", matches_path %></li>
-    <li><%= link_to "Users",   users_path %></li>
-  </ul>
-</div>
+<div id="masthead">
+
+  <h1>Code Tennis</h1>
+
+  <div id="navigation" class="<%= controller.controller_name %>">
+    <ul>
+      <li class="matches_navigation"><%= link_to "Matches", matches_path %></li>
+      <li class="users_navigation"><%= link_to "Users",   users_path %></li>
+    </ul>
+  </div>
+  
+</div> <!-- END #masthead -->
+
+<div id="content" class="<%= controller.controller_name %>">
 
 <%= render_flash %>
 
 <%= yield %>
 
-<hr />
+</div> <!-- END #content -->
 
-<p>
-<%- if logged_in? -%>
-  Logged in as <%= link_to h(current_user.fullname), current_user_path %>,
-  (<%= link_to "Log Out", logout_path %>)
-<%- else -%>
-  <%= link_to "Log In / Register", login_path %>
-<%- end -%>
-</p>
+<div id="foot">
+
+  <ul id="session">
+    <%- if logged_in? -%>
+      <li><%= link_to h(current_user.display_name), current_user_path %></li>
+      <li><%= link_to "Log Out", logout_path %></li>
+    <%- else -%>
+      <li><%= link_to "Log In / Register", login_path %></li>
+    <%- end -%>
+  </ul>
+
+  <p id="copyright"><strong>Code Tennis.</strong> Copyright &copy; 2008 <a href="http://paint.itred.org">Paint.itRed</a>, Most rights reserved.</p>
+  
+</div> <!-- END #foot -->
+</div> <!-- END #application -->
 
 </body>
 </html>

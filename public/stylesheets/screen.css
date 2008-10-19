@@ -1,0 +1,250 @@
+body {
+  font-size: 75%;
+  background-color: #111;
+  color: #ccc;
+}
+
+html>body {
+  font-size: 12px;
+}
+
+body, div, dl, dt, dd, ul, ol, li,
+h1, h2, h3, h4, h5, h6, pre, form,
+fieldset, p, blockquote, th, td {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p, pre,
+blockquote, ul, ol, dl, address {
+  margin:  1.5em 0;
+  padding: 0;
+}
+
+li, dd, blockquote {
+  margin-left: 1em;
+}
+
+a {
+  color: #fff;
+  text-decoration: none
+}
+
+li {
+  list-style: none
+}
+
+body, table, textarea {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  color: #333;
+}
+
+#application {
+  padding: 0 1.5em;
+  width: 770px;
+  margin: 1.5em auto;
+}
+
+/* Navigation ------------------------------------------------------------- */
+
+#navigation {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  font-size: 0.8333em;
+  line-height: 1.8em;
+  height: 2.5em;
+}
+
+#navigation ul {
+  position: absolute;
+  right: 0;
+  margin: 0.5em 0.5em 0 0;
+}
+
+#navigation li {
+  background-color: #CCC;
+  margin-left: 0.5em;
+  float: left;
+  padding: 0.12em 1em 0.13em 1em;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+#navigation li a:link, #navigation li a:visited {
+  color: #333;
+}
+
+#navigation li a:focus, #navigation li a:hover {
+  background-color: transparent;
+  color: #666;
+}
+
+#navigation.matches #matches_navigation,
+#navigation.users #users_navigation,
+#navigation li.current {
+  background-color: #fff !important;
+}
+
+
+#navigation.matches #matches_navigation a,
+#navigation.users #users_navigation a,
+#navigation li.current a {
+  color: #333 !important;
+}
+
+/* Content ---------------------------------------------------------------- */
+
+#content {
+  position: relative;
+  background-color: #fff;
+  color: #333;
+  padding: 10px;
+  font-size: 1em;
+  _height:1%;
+  overflow:auto;
+}
+
+#content p, #content li {
+  line-height: 1.5em;
+}
+
+#content a:link {
+  color: #666;
+  text-decoration: none;
+}
+
+#content a:visited {
+  color: #666
+}
+
+#content a:focus, #content a:hover {
+  background-color: #eee
+}
+
+#content a:active {
+  color: #ccc;
+  background-color: #333
+}
+
+/* Header ----------------------------------------------------------------- */
+
+#masthead {
+  background-color: #222;
+  height: 80px;
+  position: relative;
+}
+
+#masthead h1 {
+  color: #ddd;
+  margin: 0;
+  padding: 5px 10px;
+  font-size:2em;
+  line-height: 100%;
+  font-variant:small-caps;
+  font-weight:bold;
+  letter-spacing:1px;
+  text-transform:lowercase;
+}
+
+#masthead h1 span.alt {
+  color: #aaa;
+  font-family:"Warnock Pro","Goudy Old Style","Palatino","Book Antiqua",Georgia,serif;
+  font-style:italic;
+  font-weight:normal;
+  font-variant: normal;
+}
+
+/* Footer ----------------------------------------------------------------- */
+
+#foot {
+  margin-top: 0.5em;
+  font-size: 0.833em;
+  line-height: 1.8em;
+}
+
+#copyright {
+  margin: 0;
+  color: #ccc;
+  font-size: 1.1em;
+  font-family:"Warnock Pro","Goudy Old Style","Palatino","Book Antiqua",Georgia,serif;
+  font-style:italic;
+}
+
+#copyright strong {
+  color: #eee;
+  font-variant:small-caps;
+  text-transform:lowercase;
+  font-style: normal;
+  font-size: 1.2em;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+
+#session {
+  float: right;
+  margin: 0 0 0.6em 0;
+}
+
+#session li {
+  margin-left: 0.6em;
+  float: left;
+}
+
+#session li a {
+  display: block;
+  font-weight: bold;
+  line-height: 1.5em;
+  padding: 0.1em 0.6em 0.2em 0.6em;
+}
+
+#session li a:link, #session li a:visited {
+  color: #333;
+  background-color: #666;
+}
+
+#session li a:focus, #session li a:hover, #session li a:active {
+  color: #666;
+  background-color: #ccc;
+}
+
+/* Flash Messages --------------------------------------------------------- */
+
+#flash {
+  width: auto;
+  border-top: 0.1666em solid #333;
+  border-bottom: 0.0834em dotted #333;
+  font-size: 1em;
+  line-height: 1.5em;
+  padding: 0.25em;
+  margin: 0 0 1.5em 0;
+}
+
+#flash.notice {
+  color: #060;
+  border-color: #060;
+  background-color: #DED;
+}
+
+#flash.error {
+  color: #900;
+  border-color: #900;
+  background-color: #ECC;
+}
+
+/* Tables ------------------------------------------------------------------ */
+
+table {
+  border-spacing: 4px;
+  width: 100%;
+}
+
+table th {
+  padding: 0 6px;
+  text-align: left;
+}
+
+table td {
+  background: #eee;
+  padding: 0 6px;
+  height: 24px;
+}
