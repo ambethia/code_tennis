@@ -54,6 +54,19 @@ body, table, textarea {
   margin: 1.5em auto;
 }
 
+/* Help ------------------------------------------------------------------- */
+
+ul.tools li {
+  display: inline;
+  font-size: 2em;
+  font-weight: bold;
+  padding: 0 0 .25em 0;
+  margin: 0;
+}
+
+
+.tools img {vertical-align: middle;}
+
 /* Navigation ------------------------------------------------------------- */
 
 #navigation {
@@ -106,14 +119,39 @@ body, table, textarea {
 
 /* Content ---------------------------------------------------------------- */
 
+#home {
+  width: 475px;
+  margin: 0 auto;
+  font-size: 1.25em;
+  text-align: center;
+}
+
 #content {
   position: relative;
   color: #333;
-  padding: 10px;
+  padding: 30px;
   font-size: 1em;
   _height:1%;
   overflow:auto;
   background: #eee url(../images/watermark.png) no-repeat scroll center center;
+}
+
+#content h1 {
+  font-size: 3.5em;
+  padding: 1em 0 .5em;
+  text-align: center;
+}
+
+#content h2 {
+  font-size: 2.5em;
+  padding: .5em 0 .5em;
+  margin: 0;
+  text-align: left;
+}
+
+#content p {
+  padding: 0;
+  margin: 0 0 1em;
 }
 
 #content p, #content li {
@@ -209,6 +247,7 @@ body, table, textarea {
   color: #ccc;
   text-align: center;
   background-color: #3a3a3c;
+  background-image: none;
   }
   
 #foot.splash p#copyright,#foot.splash p#copyright a,#foot.splash p#copyright strong {

@@ -1,9 +1,15 @@
+<div id="match_page">
+
 <h2><%=h @match.name %></h2>
+
+<%- if current_user == @match.admin -%><p><b><%= link_to "Edit", edit_match_path(@match) %></b> this match.</p><%- end -%>
+
 <% if @match.complete? %>
   <h3>This match is over.</h3>
 <% elsif current_user == @match.admin %>
-  <%= link_to "Close this match", complete_match_path(@match), :method => :put %>
+  <p><%= link_to "Close this match", complete_match_path(@match), :method => :put %></p>
 <% end %>
+
 <p>
   <b>Admin:</b> <%= link_to h(@match.admin.fullname), @match.admin %>
 </p>
@@ -14,7 +20,8 @@
 
 <%- if current_user == @match.admin -%>
 <p>
-  <b>Github Post-Receive URL:</b> <%= push_match_url(@match) %>
+  Your <b>Post-Receive URL</b> for github is <code style="background:#ffffcc"><%= push_match_url(@match) %></code><br />
+  Make sure you place this in <%= link_to h(@match.github_project), h(@match.github_url) %>'s Post-Receive URL so we can track your project.
 </p>
 <%- end -%>
 
@@ -51,16 +58,13 @@ your available matches.</p>
 <p>No volleys have been completed.</p>
 <%- end -%>
 
-<p>
-  <%= link_to "Back", matches_path %>
-  <% if @match.admin == current_user %>| <%= link_to "Edit", edit_match_path(@match) %><% end %>
-</p>
-
 <%- if ENV["RAILS_ENV"] == "development" -%>
 <div id="dev_env"></div>
 <%- end -%>
 <div id="match_id" style="display:none;"><%= @match.id %></div>
 <script type="text/javascript" charset="utf-8">
+
+
 var tl;
 var resizeTimerID = null;
 var match_id = document.getElementById('match_id').innerHTML;
@@ -90,7 +94,7 @@ function onLoad() {
 	  ];
 	  bandInfos[1].syncWith = 0;
 	  bandInfos[1].highlight = true;
-	
+
 	  tl = Timeline.create(document.getElementById('volley-timeline'), bandInfos);
 	 Timeline.loadXML(url , function(xml, url) { eventSource.loadXML(xml, url); });
 	};
@@ -103,5 +107,10 @@ function onResize() {
 	        }, 500);
 	    }
 };
+// fucking hacks :/
+document.body.onload = onLoad();
+document.body.onresize = onResize();
 
 </script>
+  
+</div>
