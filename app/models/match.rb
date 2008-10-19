@@ -44,9 +44,11 @@ class Match < ActiveRecord::Base
 
   def push(payload)
     commits = ActiveSupport::JSON.decode(payload)["commits"]
+    dirty = false
     commits.each do |commit|
       user = self.users.find_by_email(commit["author"]["email"])
       if user
+        dirty = true
         self.active_volley.commits.create({
           :guid    => commit["id"],
           :url     => commit["url"],
@@ -55,6 +57,10 @@ class Match < ActiveRecord::Base
         })
         new_volley if commit["message"] =~ /volley/
       end
+    end
+    if dirty
+      self.updated_at = Time.now
+      self.save!
     end
   end
 
