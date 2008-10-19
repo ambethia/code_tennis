@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Code Tennis</title>
+  <%= stylesheet_link_tag :all %>
+</head>
+<body>
+
+<div id="application">
+
+<div id="masthead">
+
+  <h1>Code Tennis</h1>
+  
+</div> <!-- END #masthead -->
+
+<div id="content" class="splash">
+
+
+
+</div> <!-- END #content -->
+
+<div id="foot">
+
+  <ul id="session">
+    <%- if logged_in? -%>
+      <li><%= link_to h(current_user.display_name), current_user_path %></li>
+      <li><%= link_to "Log Out", logout_path %></li>
+    <%- else -%>
+      <li><%= link_to "Log In / Register", login_path %></li>
+    <%- end -%>
+  </ul>
+
+  <p id="copyright"><strong>Code Tennis.</strong> Copyright &copy; 2008 <a href="http://paint.itred.org">Paint.itRed</a>, Most rights reserved.</p>
+  
+</div> <!-- END #foot -->
+</div> <!-- END #application -->
+
+</body>
+</html>

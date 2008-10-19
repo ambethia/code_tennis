@@ -1,6 +1,3 @@
-# Filters added to this controller apply to all controllers in the application.
-# Likewise, all the methods added will be available for all controllers.
-
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
@@ -17,6 +14,10 @@ class ApplicationController < ActionController::Base
   def current_user=(user)
     session[:user_id] = user ? user.id : nil
     @current_user = user || false
+  end
+
+  def index
+    render :template => "layouts/splash", :layout => false
   end
 
 end
