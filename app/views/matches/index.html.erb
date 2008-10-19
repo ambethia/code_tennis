@@ -1,13 +1,67 @@
 <h1>Current Matches</h1>
 
-<table>
-<% for match in @matches %>
-  <tr>
-    <td><%= link_to h(match.name), match %></td>
-    <td><%=h match.description %></td>
-  </tr>
+  <% for match in @matches %>
+    <table class="match"> 
+    <tr>
+      <td class="match-name"><%= link_to h(match.name), match %></td>
+      <td>
+        <table class="dates">
+          <tr>
+            <td>Start Date:</td>
+            <td class="match-created">Date 00, 2008</td>
+          </tr>
+          <tr>
+            <td>Last Played:</td>
+            <td class="match-updated">Date 00, 2008</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="match-description"><%=h match.description %></td>
+    </tr>
+    <tr>
+      <td class="match-icon">Icon</td>
+      <td>
+        <table>
+          <tr >
+            <td class="match-gm">Game Master</td>
+          </tr>
+          <tr>
+            <td class="match-user">Ken Yatellmy</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td class="match-icon">Icon</td>
+      <td>
+        <table>
+          <tr>
+            <td class="match-player1">Player 1</td>
+          </tr>
+          <tr>
+            <td class="match-user">Eya Duntknow</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td class="match-icon">Icon</td>
+      <td>
+        <table>
+          <tr>
+            <td class="match-player2">Player 2</td>
+          </tr>
+          <tr>
+            <td class="match-user">Hoo Dafukesit</td>
+          </tr>
+        </table>
+      </td>
+    </tr> 
+  </table> 
 <% end %>
-</table>
+
 
 <br />
 
