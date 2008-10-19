@@ -55,7 +55,7 @@ class Match < ActiveRecord::Base
           :message => commit["message"],
           :player  => self.players.find_by_user_id(user.id)
         })
-        new_volley if commit["message"] =~ /volley/
+        volley! if commit["message"] =~ /\[volley\]/
       end
     end
     if dirty
