@@ -11,6 +11,8 @@
 
 <br />
 
+<%= will_paginate @matches %>
+
 <%- if logged_in? -%>
 <p>
   <%= link_to("Setup a new match", new_match_path) %>
