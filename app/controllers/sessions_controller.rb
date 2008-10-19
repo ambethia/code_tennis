@@ -16,10 +16,10 @@ class SessionsController < ApplicationController
           @user.time_zone = ActiveSupport::TimeZone::MAPPING.index(registration["timezone"])
           @user.save(false)
           self.current_user = @user
-          redirect_to ["edit", @user]
+          redirect_to current_user_path
         else
           self.current_user = @user
-          redirect_to root_path
+          redirect_to matches_path
         end
       else
         flash[:warning] = result.message
@@ -31,6 +31,6 @@ class SessionsController < ApplicationController
   def destroy
     reset_session
     flash[:notice] = "You have been logged out."
-    redirect_to root_url
+    redirect_to matches_path
   end
 end
