@@ -108,12 +108,12 @@ body, table, textarea {
 
 #content {
   position: relative;
-  background-color: #eee;
   color: #333;
   padding: 10px;
   font-size: 1em;
   _height:1%;
   overflow:auto;
+  background: #eee url(../images/watermark.png) no-repeat scroll center center;
 }
 
 #content p, #content li {
@@ -150,13 +150,13 @@ body, table, textarea {
 }
 
 #new-session h2 {
-  font-size: 2.5em;
+  font-size: 3.5em;
   margin: .5em 0;
 }
 
 #new-session h3 {
   color: #666;
-  font-size: 1.5em;
+  font-size: 2.5em;
   margin: 1em 0 0;
   padding: 0;
 }
@@ -193,6 +193,8 @@ body, table, textarea {
   vertical-align: baseline;
 }
 
+/* Users ------------------------------------------------------------------ */
+.users {}
 
   
 /* Splash ----------------------------------------------------------------- */
@@ -214,7 +216,9 @@ body, table, textarea {
   text-align: right;
 }
 
-/* Header ----------------------------------------------------------------- */
+
+
+/* Header ----------------------------------------_------------------------ */
 
 #masthead {
   background-color: #3a3a3c;
@@ -372,7 +376,60 @@ table th {
 }
 
 table td {
-  background: #999;
+  background: transparent;
   padding: 0 6px;
   height: 24px;
 }
+
+
+/* Matches --------------_-------------------------------------------------- */
+
+.matches table {
+  margin: 0 0 20px;
+  padding: 0 20px;
+}
+
+td.avatar {
+  width: 100px;
+  height: 100px;
+  background-color: #ccc;
+}
+
+td.match-name {
+  font-size: 2em;
+  font-style: bold;
+  text-transform: uppercase;
+  padding: 0 10px;
+}
+
+td.date-start,td.date-updated {
+  font-size: 1.5em;
+  padding: 5px 10px;
+}
+
+td.players {
+  font-size: 1.5em;
+  padding: 5px 10px;
+}
+
+#new_match,#new_user,#edit_match,#edit_user {
+  width: 375px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#new_match,#new_user,#edit_match,#edit_user p {
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+input[type=text],textarea {
+  width: 375px;
+  filter:alpha(opacity=50);
+  -moz-opacity:0.5;
+  -khtml-opacity: 0.5;
+  opacity: 0.5;
+  padding: .5em;
+
+}  

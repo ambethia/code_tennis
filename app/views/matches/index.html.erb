@@ -1,13 +1,34 @@
 <h1>Current Matches</h1>
 
-<table>
 <% for match in @matches %>
-  <tr>
-    <td><%= link_to h(match.name), match %></td>
-    <td><%=h match.description %></td>
-  </tr>
+
+  <table>
+    <tr>
+      <td rowspan="4" class="avatar">
+        <%= display_user_avatar(match.admin, :large) %>
+      </td>
+      <td colspan="2" class="match-name">
+        <%= link_to h(match.name), match %>
+      </td>
+      <tr>
+        <td class="date-start">
+          <strong>Start Date:</strong> Date 00, 2008
+        </td>
+        <td class="date-updated">
+          <strong>Last Serve:</strong> Date 00, 2008
+        </td>
+      </tr>
+      <tr>
+         <td class="players" colspan="2">
+           <strong>Players:</strong> <%= match.players.map(&:name).join(", ") %>
+        </td>
+      </tr>
+    </table>
+        
+        
+              
 <% end %>
-</table>
+
 
 <br />
 
