@@ -22,9 +22,7 @@
     <%= f.check_box :admin_is_player %>
     <%= f.label :admin_is_player, "Include yourself as a player?" %>
   </p>
-  <p>
-    <%= f.submit "Create" %>
-  </p>
+
+   <span><%= f.submit "Create" %> <%= link_to "Cancel", matches_path %></span>
 <% end %>
 
-<%= link_to 'Back', matches_path %>
