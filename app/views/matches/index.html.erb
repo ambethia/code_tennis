@@ -12,10 +12,15 @@
       </td>
       <tr>
         <td class="date-start">
-          <strong>Start Date:</strong> Date 00, 2008
+          <strong>Start of Play:</strong> <%= match.created_at.strftime("%b %d, %Y") %>
         </td>
         <td class="date-updated">
-          <strong>Last Serve:</strong> Date 00, 2008
+          <strong>Last Serve:</strong> 
+			<%- if match.volleys.complete.any? -%>
+			<%= match.volleys.complete.last.completed_at.strftime("%b %d, %Y") %>
+			<%- else -%>
+			No volleys completed yet.
+			<%- end -%>
         </td>
       </tr>
       <tr>
