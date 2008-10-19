@@ -15,11 +15,9 @@
           <strong>Start of Play:</strong> <%= match.created_at.strftime("%b %d, %Y") %>
         </td>
         <td class="date-updated">
-          <strong>Last Serve:</strong> 
 			<%- if match.volleys.complete.any? -%>
+          <strong>Last Serve:</strong> 
 			<%= match.volleys.complete.last.completed_at.strftime("%b %d, %Y") %>
-			<%- else -%>
-			No volleys completed yet.
 			<%- end -%>
         </td>
       </tr>
