@@ -10,6 +10,8 @@ ActionController::Routing::Routes.draw do |map|
     "players"  => :post,
   }
 
+  map.home "/home", :controller => "home", :action => "index"
+  map.help "/help", :controller => "home", :action => "help"
   map.resource :session
   map.logout   "/logout", :controller => "sessions", :action => "destroy"
   map.login    "/login",  :controller => "sessions", :action => "new"
