@@ -1,0 +1,6 @@
+xml.instruct!
+xml.data do
+  @match.volleys.each do |volley|
+	  xml.event('some event', :start => volley.created_at, :end => volley.updated_at, :isDuration => true, :title => volley.player.display_name ) 
+  end
+end
