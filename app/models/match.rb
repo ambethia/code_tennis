@@ -55,12 +55,7 @@ class Match < ActiveRecord::Base
     player = self.next_player
     self.active_volley.update_attribute :completed_at, Time.now
     self.volleys.create(:player => player) unless complete?
-  end
-
-  def notify_players
-    players.each do |player|
-      Twitter.update("@#{player.twitter_name} New Volley: <a href=\"http://#{ENV['HOSTNAME']}/matches/#{self.id}\">#{self.name }</a> ") if player.twitter_name
-    end
+    Twitter.update("@#{player.twitter_name} You're up for the next volley on #{self.name} (http://#{ENV['HOSTNAME']}/matches/#{self.id})") if player.twitter_name
   end
 
   def possible_admins
