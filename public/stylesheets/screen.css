@@ -240,6 +240,7 @@ ul.tools li {
   color: #ccc;
   text-align: center;
   background-color: #3a3a3c;
+  background-image: none;
   }
   
 #foot.splash p#copyright,#foot.splash p#copyright a,#foot.splash p#copyright strong {

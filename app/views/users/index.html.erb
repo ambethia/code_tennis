@@ -1,9 +1,18 @@
-<h1>All Users</h1>
-
-<ul>
+<h1>Code Tennis Player Roster</h1>
+<% unless logged_in? %>
+<h3><%= link_to 'Join the Game', login_path %></h3>
+<% end %>
+<p>
+	<% first = true %>
 	<% @users.each do |user| %>
-		<li><%= link_to h(user.display_name), user_path(user) %></li>
+		<% if first 
+			first = false
+		else %>
+			,
+		<% end %>
+		<%= link_to h(user.display_name), user_path(user) %>
+		
 	<% end %>
-</ul>
+</p>
 
-<%= will_paginate @users %>
+
