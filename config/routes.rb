@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :matches, :member => { "push" => :post, "complete_volley" => :get, "complete_match" => :get}
+  map.resources :matches, :member => { "push" => :post, "complete_volley" => :get, "complete_match" => :get, "volleys" => :get}
 
   map.resource :session
   map.logout   "/logout", :controller => "sessions", :action => "destroy"
