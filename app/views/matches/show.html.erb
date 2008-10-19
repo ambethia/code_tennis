@@ -110,11 +110,20 @@ function onLoad() {
 	  var bandInfos = [
 	    Timeline.createBandInfo({
 		  	eventSource:    eventSource,
-			width:          "100%", 
-	        intervalUnit:   Timeline.DateTime.MONTH, 
+			width:          "60%", 
+	        intervalUnit:   Timeline.DateTime.DAY, 
 	        intervalPixels: 100
 	    }),
+	    Timeline.createBandInfo({
+		  	eventSource:    eventSource,
+			width:          "40%", 
+	        intervalUnit:   Timeline.DateTime.MONTH, 
+	        intervalPixels: 100
+	    })
 	  ];
+	  bandInfos[1].syncWith = 0;
+	  bandInfos[1].highlight = true;
+	
 	  tl = Timeline.create(document.getElementById('volley-timeline'), bandInfos);
 	 Timeline.loadXML(url , function(xml, url) { eventSource.loadXML(xml, url); });
 	};
