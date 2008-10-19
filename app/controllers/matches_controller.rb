@@ -127,4 +127,13 @@ class MatchesController < ApplicationController
     redirect_to match_path(@match)
   end
   
+  
+  def volleys
+    @match   = Match.find(params[:id])
+    respond_to do |format|
+      format.xml  { render :action => 'volleys.html.erb', :xml => @match }
+    end
+    
+  end
+  
 end
