@@ -31,6 +31,7 @@
     <%= f.label :time_zone %><br />
     <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones %>
   </p>
+  <%= f.label :avatar %><br />
 
   <ul>
 		<%- @avatars.each do |avatar| -%>
@@ -46,11 +47,6 @@
   	</select>
   </p>
 
-  <%= f.label :avatar %><br />
-  <% @avatars.each do |avatar| %>
-	<%= f.radio_button :avatar_id, avatar.id %>
-	<%= image_tag(avatar.filename, :alt => avatar.name) %>
-  <% end %>
   <p>
     <%= f.submit "Update" %> <%= link_to "Cancel", @user %>
   </p>
