@@ -54,6 +54,13 @@ body, table, textarea {
   margin: 1.5em auto;
 }
 
+.note {
+  display: block;
+  font-size: .5em;
+  padding: 0;
+  margin: 0;
+}
+
 /* Help ------------------------------------------------------------------- */
 
 ul.tools li {
@@ -263,7 +270,7 @@ ul.tools li {
 
 
 
-/* Header ----------------------------------------_------------------------ */
+/* Header ----------------------------------------------------------------- */
 
 #masthead {
   background-color: #3a3a3c;
@@ -271,9 +278,13 @@ ul.tools li {
   position: relative;
 }
 
-#masthead h1 {
-  color: #ddd;
+#head a {
+  width: 990px;
   height: 274px;
+  display: block;
+}
+
+#head h1 {
   margin: 0;
   padding: 5px 20px;
   background: #3a3a3c url(../images/head.png) no-repeat scroll 128px top;
@@ -427,7 +438,7 @@ table td {
 }
 
 
-/* Matches --------------_-------------------------------------------------- */
+/* Matches ----------------------------------------------------------------- */
 
 .matches table {
   margin: 0 0 20px;
@@ -457,13 +468,13 @@ td.players {
   padding: 5px 10px;
 }
 
-#new_match,#new_user,#edit_match,#edit_user {
+#new_match,#new_user,#edit_match,#edit_user,#form {
 /*  width: 375px;*/
   margin: 0 auto;
   text-align: center;
 }
 
-#new_match,#new_user,#edit_match,#edit_user p {
+#new_match,#new_user,#edit_match,#edit_user,#form p {
 /*  text-align: center;*/
   font-size: 1.5em;
   font-weight: bold;

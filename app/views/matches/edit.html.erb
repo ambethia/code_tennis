@@ -23,7 +23,5 @@
     <%= f.select :admin_id, @match.possible_admins.collect {|u| [ u.fullname, u.id ] } %>
     <span class="note">Note: You will no longer be able to administer this match if you make someone else the admin.</span>
   </p>
-  <p>
-    <%= f.submit "Update" %> <%= link_to "Cancel", @match %>
-  </p>
+    <span><%= f.submit "Update" %> <%= link_to "Cancel", @match %></span>
 <% end %></div>
