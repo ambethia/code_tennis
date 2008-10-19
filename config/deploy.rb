@@ -33,3 +33,4 @@ end
 
 after "deploy:symlink", "deploy:custom_symlinks"
 after "deploy", "deploy:cleanup"
+before "deploy:migrate", "deploy:custom_symlinks"
