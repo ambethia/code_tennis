@@ -1,5 +1,5 @@
 <table class="volley">
-  <tr>
+  <tr class="head">
     <td colspan="2">
       Volleyed to <%=h volley.player.name %> at
       <%= volley.created_at.strftime("%B #{volley.created_at.day.ordinalize}, %Y %I:%M %p") %>
@@ -8,16 +8,15 @@
   <%- if !volley.commits.blank? -%>
   <%- for commit in volley.commits -%>
   <tr>
-    <td colspan="2"><%= link_to h(commit.guid), h(commit.url) %></td>
+    <td class="avatar" rowspan="2">
+      <%= link_to display_user_avatar(commit.player.user, :small), commit.player.user %>
+    </td>
+    <td class="message"><%= link_to h(commit.guid), h(commit.url) %> : <%= h(commit.message) %></td>
   </tr>
   <tr>
-    <td>
-      <%= h(commit.message) %>
-    </td>
-    <td>
-      <%= display_user_avatar(commit.player.user, :small) %>
-      <%= h(commit.player.name) %>
-      <%= commit.created_at.strftime("%B #{commit.created_at.day.ordinalize}, %Y %I:%M %p") %>
+    <td class="">
+      Commited at <%= commit.created_at.strftime("%B #{commit.created_at.day.ordinalize}, %Y %I:%M %p") %>
+      by <%= link_to h(commit.player.name), commit.player.user %>
     </td>
   </tr>
   <%- end -%>
