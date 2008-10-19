@@ -89,6 +89,7 @@ body, table, textarea {
   color: #333;
 }
 
+#navigation.home #home_navigation,
 #navigation.matches #matches_navigation,
 #navigation.users #users_navigation,
 #navigation li.current {
@@ -96,6 +97,7 @@ body, table, textarea {
 }
 
 
+#navigation.home #home_navigation a,
 #navigation.matches #matches_navigation a,
 #navigation.users #users_navigation a,
 #navigation li.current a {
