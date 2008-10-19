@@ -1,26 +1,21 @@
-<h1>Current Matches</h1>
+<div id="match_index">
+
+<h1>Matches</h1>
 
 <% for match in @matches %>
 
   <table>
     <tr>
       <td rowspan="4" class="avatar">
-        <%= display_user_avatar(match.admin, :large) %>
+        <%= display_user_avatar(match.admin, :medium) %>
       </td>
-      <td colspan="2" class="match-name">
-        <%= link_to h(match.name), match %>
+      <td colspan="2">
+        <span class="match-name"><%= link_to h(match.name), match %></span><br />
+        <span class="match-description"><%= match.description %></span>
       </td>
-      <tr>
-        <td class="date-start">
-          <strong>Start Date:</strong> Date 00, 2008
-        </td>
-        <td class="date-updated">
-          <strong>Last Serve:</strong> Date 00, 2008
-        </td>
-      </tr>
       <tr>
          <td class="players" colspan="2">
-           <strong>Players:</strong> <%= match.players.map(&:name).join(", ") %>
+           <strong>Players:</strong> <%= match.players.map{|p| link_to(h(p.name), p.user) }.to_sentence %>
         </td>
       </tr>
     </table>
@@ -35,7 +30,9 @@
 <%= will_paginate @matches %>
 
 <%- if logged_in? -%>
-<p>
-  <%= link_to("Setup a new match", new_match_path) %>
+<p class="new_match">
+  Set up <%= link_to("your own match", new_match_path) %>.
 </p>
 <%- end -%>
+
+</div>

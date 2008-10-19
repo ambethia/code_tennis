@@ -7,7 +7,7 @@ class MatchesController < ApplicationController
   # GET /matches
   # GET /matches.xml
   def index
-    @matches = Match.paginate :per_page => 20, :page => params[:page]
+    @matches = Match.paginate :per_page => 10, :page => params[:page]
 
     respond_to do |format|
       format.html # index.html.erb

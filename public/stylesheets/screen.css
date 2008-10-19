@@ -442,6 +442,43 @@ table td {
   height: 24px;
 }
 
+/* Pagination -------------------------------------------------------------- */
+
+
+.pagination {
+  padding: 3px 0;
+  margin: 3px 0;
+}
+
+.pagination a {
+  padding: 2px 5px 2px 5px;
+  margin: 2px;
+  border: 1px solid #999;
+  text-decoration: none;
+  color: #999;
+}
+
+.pagination a:hover, .pagination a:active {
+  border: 1px solid #666;
+  color: #fff;
+  background-color: #666;
+}
+
+.pagination span.current {
+  padding: 2px 5px 2px 5px;
+  margin: 2px;
+  border: 1px solid #999;
+  font-weight: bold;
+  background-color: #999;
+  color: #FFF;
+}
+
+.pagination span.disabled {
+  padding: 2px 5px 2px 5px;
+  margin: 2px;
+  border: 1px solid transparent;
+  color: #aaa;
+}
 
 /* Matches ----------------------------------------------------------------- */
 
@@ -451,16 +488,22 @@ table td {
 }
 
 td.avatar {
+  padding: 5px 5px 0 5px;
   width: 100px;
   height: 100px;
   background-color: #ccc;
 }
 
-td.match-name {
+span.match-name {
   font-size: 2em;
   font-style: bold;
   text-transform: uppercase;
   padding: 0 10px;
+}
+
+span.match-description {
+  padding: 0 10px;
+  font-size: 1.6em;
 }
 
 td.date-start,td.date-updated {
@@ -493,3 +536,25 @@ input[type=text],textarea {
   opacity: 0.5;
   padding: .5em;
 }  
+
+#match_index {
+  text-align: center;
+}
+
+#match_index table {
+  margin: 1em auto;
+  width: 550px;
+  border-bottom: 2px solid #ccc;
+  border-top: 2px solid #ccc;
+  
+}
+
+#match_index td {
+  text-align: left;
+}
+
+#match_index p.new_match {
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 2em;
+}
