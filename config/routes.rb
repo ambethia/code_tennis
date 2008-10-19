@@ -2,7 +2,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :matches, :member => {
     "push"     => :post,
     "volley"   => :put,
-    "complete" => :put
+    "complete" => :put,
+    "volleys"  => :get
   }
 
   map.resource :session

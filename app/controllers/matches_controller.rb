@@ -1,7 +1,7 @@
 class MatchesController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :push
   
-  before_filter :find_match,         :only => [:edit, :update, :destroy, :complete, :volley, :push, :show]
+  before_filter :find_match,         :only => [:edit, :update, :destroy, :complete, :volley, :push, :show, :volleys]
   before_filter :requires_ownership, :only => [:edit, :update, :destroy, :complete, :volley]
 
   # GET /matches
@@ -100,6 +100,14 @@ class MatchesController < ApplicationController
     @match.complete!
     redirect_to match_path(@match)
   end
+  
+  def volleys
+    respond_to do |format|
+      format.xml  { render :action => 'volleys.html.erb', :xml => @match }
+    end
+    
+  end
+  
 
   private
 
