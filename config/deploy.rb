@@ -1,18 +1,18 @@
 set :application, "code_tennis"
 
-set :deploy_to, "/var/apps/#{application}"
+set :deploy_to, "/home/ambethia/www/codetennis.com"
 
 set :scm, :git
-set :repository,  "git@github.com:railsrumble/tampa-rb.git"
+set :repository,  "github.code_tennis:ambethia/code_tennis.git"
 set :git_enable_submodules, true
-set :branch, "railsrumble"
+set :branch, "release"
 set :deploy_via, :remote_cache
 
-role :app, "66.246.75.37"
-role :web, "66.246.75.37"
-role :db,  "66.246.75.37", :primary => true
+role :app, "codetennis.com"
+role :web, "codetennis.com"
+role :db,  "codetennis.com", :primary => true
 
-ssh_options[:username] = "deploy"
+ssh_options[:username] = "ambethia"
 set :run_method, :run
 
 namespace :deploy do
@@ -32,6 +32,6 @@ namespace :deploy do
   end
 end
 
-after "deploy:symlink", "deploy:custom_symlinks"
-after "deploy", "deploy:cleanup"
 before "deploy:migrate", "deploy:custom_symlinks"
+after  "deploy:symlink", "deploy:custom_symlinks"
+after  "deploy",         "deploy:cleanup"
