@@ -22,4 +22,3 @@ config.action_view.cache_template_loading            = true
 # config.action_mailer.raise_delivery_errors = false
 
 ENV["HOSTNAME"] = "codetennis.com"
-ENV["GEM_PATH"] = "/home/ambethia/.gem"
