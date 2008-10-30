@@ -23,6 +23,7 @@ describe Match do
       @payload = File.open(fixture_path + "/github/payload.js").read
       @match.stub!(:active_volley).and_return(@volley)
       @match.stub!(:users).and_return(stub("ARProxy", :[] => [], :find_by_email => @player))
+      @match.stub!(:volley!).and_return(true)
     end
 
     it "should create many commits" do
@@ -31,6 +32,10 @@ describe Match do
     
     it "should find the player" do
       @match.users.should_receive(:find_by_email).with("ambethia@example.com").twice
+    end
+    
+    it "should volley the match" do
+      @match.should_receive(:volley!)
     end
 
     after(:each) do
@@ -44,20 +49,11 @@ describe Match do
     it "should not include users that aren't playing" do
       matches(:binary_frisbee).possible_admins.should_not include(users(:madcowley))
     end
-    
+
     it "should not include admin twice if they're playing" do
       matches(:binary_frisbee).possible_admins.size.should == 2
     end
 
   end
-  
-  describe "volley receives a commit" do
-    it "should update the match updated_at timestamp" do
-      @payload = File.open(fixture_path + "/github/payload.js").read
-      @match.should_receive(:updated_at=)
-      @match.push(@payload)
-    end
-  end
-  
 end
 
